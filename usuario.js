@@ -130,6 +130,7 @@ class DobleLinkedList{
     isEmpty(){
         return this.size === 0;
     };
+    
 };
 
 //------------------------------------Programa-------------------------------------------------------------------------------------------
@@ -237,4 +238,62 @@ class calificacion {
         this.comentario=comentario;
         this.contrato=null; 
     }
+}
+
+
+class Stack extends Node{
+    constructor(data, next, prev){
+        super(data, next, prev);
+    }
+    addToStack(data){
+        const newNode = new Node(data, this.head,null);
+
+        if(this.head){
+            newNode.next = this.head;
+            this.head.prev = newNode;
+            this.head = newNode;
+        }else{
+            this.head = newNode;
+            this.tail = newNode;
+        };
+        this.size++;
+    };
+    getStack(this){
+        if (this.head == null){
+            console.log("No hay nada almacenado");
+            return
+        }
+        currentNode = this.head;
+
+        while (true) {
+            if (currentNode == null){
+                break
+            }
+            console.log(currentNode.data);
+            currentNode = currentNode.next;    
+        }
+    };
+}
+
+class GenerarHistorial{
+    constructor(contrato){
+        this.contrato=contrato;
+    }
+    guardarData(contrato){
+        
+        const Stack0 = Stack.addToStack(contrato);
+    }
+    
+}
+
+class Historial{
+    constructor(contrato){
+        this.Stack0 = GenerarHistorial.guardarData(contrato);
+
+    }
+    mostrarHistorial(Stack0){
+        Stack.getStack(Stack0);
+
+    }
+    
 }
