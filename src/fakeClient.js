@@ -4,7 +4,7 @@ const fs = require("fs");
 function generateClient() {
     // Aca se guardan los datos falsos en las estructuras establecidas
     let users = [];
- 
+
     //Generamos el numero de datos requeridos:
     for (let id = 1; id <= 1000000; id++) {
 

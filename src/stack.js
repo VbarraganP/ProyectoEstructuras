@@ -3,7 +3,7 @@ class Stack {
         this.items = {};
         this.top = 0;
     };
- 
+
     push(data){
         this.top++;
         this.items[this.top]= data;
