@@ -1,10 +1,44 @@
+const faker = require("faker");
+const fs = require("fs");
+
+function generateClient(lista) {
+    //Generamos el numero de datos requeridos:
+    for (let id = 1; id <= 1000000; id++) {
+
+        const firstName = faker.name.firstName();
+        const lastName = faker.name.lastName();
+        const phoneNumber = faker.phone.phoneNumber();
+        const city = 'Bogota';
+        const email = faker.internet.email();
+        const score = faker.random.number();
+        const description = faker.random.words(20);
+        const owner = faker.name.firstName();
+
+        //llamamos el metodo que introduce los datos en la estructura
+        let data = {
+            id: id,
+            firstname: firstName,
+            lastname: lastName,
+            phoneNumber: phoneNumber,
+            city: city,
+            email: email,
+            score: score,
+            description: description,
+            owner: owner
+        };
+        const objNode = new Node(data, null, null);
+
+        lista.addToTail(objNode);
+    }
+}
+
 class Node{
     constructor(data, next, prev){
         this.data = data;
         this.next = next;
         this.prev = prev;
     };
-}
+} 
 class DobleLinkedList{
     constructor(){
         this.head = null;
@@ -100,7 +134,7 @@ class DobleLinkedList{
         this.size--;
         return valueToReturn;
     };
-    removeData(){
+    removeData(data){
         let current = this.head;
         let previous = null;
         
@@ -130,4 +164,24 @@ class DobleLinkedList{
     isEmpty(){
         return this.size === 0;
     };
+    see() {
+        var node = this.head;
+        while (node != null) {
+            console.log(node.data);
+            node = node.next;
+            console.clear();
+        }
+    };
 };
+
+// Pruebas
+
+let lista = new DobleLinkedList();
+generateClient(lista);
+
+let start = process.hrtime();
+lista.see();
+let diff = process.hrtime(start);
+// returns for example [ 1, 2325 ]
+console.log(`Operation took ${diff[0] * 1e9 + diff[1]} nanoseconds`);
+// console.log(lista.tail);

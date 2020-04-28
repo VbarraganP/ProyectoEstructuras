@@ -1,41 +1,47 @@
+class SNodo {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+};
 class Queue{
     constructor(){
-        this.items = {};
-        this.front = 0;
-        this.end = 0;
+        this.head = null;
+        this.tail = null;
+        this.lenght = 0;
     };
-
+  
     enqueue(data){
-        this.items[this.end] = data;
-        this.end++;
+        const node = new SNode(data);
+
+        if(this.head){
+            this.tail.next = node;
+            this.tail = node;
+        }else{
+            this.head = node;
+            this.tail = node;
+        };
+        this.lenght++;
     };
 
     dequeue(){
-        if (this.front === this.end){
-            return null;
-        };
-        const data = this.items[this.front];
-        this.front++;
-        return data;
+        const current = this.head;
+        this.head = this.head.next;
+        this.lenght--;
+
+        return current.value;
     };
 
     getSize(){
-        return this.end - this.front;
+        return this.lenght;
     };
 
     isEmpty(){
-        if(this.getSize()=== 0){
-            return true;
-        }else{
-            return false;
-        };
+        return this.lenght === 0;
     };
 
     peek(){
-        if(this.getSize === 0){
-            return null;
-        };
-        return this.items[this.front];
-    }
+        return this.head.value;
+    };
 
-}
+};
