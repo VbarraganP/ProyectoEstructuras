@@ -1,3 +1,4 @@
+
 //------------------------------------Estructuras---------------------------------------------------------------------------------------
 class Node{
     constructor(data, next, prev){
@@ -133,6 +134,56 @@ class DobleLinkedList{
     
 };
 
+class SNode {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    };
+};
+class Stack {
+    constructor() {
+        this.top = null;
+        this.lenght = 0;
+    };
+ 
+    push(data){
+        const newNode = new SNode(data);    
+        newNode.next = this.top;
+        this.top = newNode;
+        this.lenght++;
+    };
+
+    pop(){
+        if(this.top === null){
+            return null;
+        };
+        const valueToReturn = this.top;
+        this.top = this.top.next;
+        this.lenght--;
+        return valueToReturn;
+    };
+
+    getSize(){
+        return this.lenght;
+    };
+
+    isEmpty(){
+        return this.top === null;
+    };
+
+    peek(){
+        return this.top;
+    };
+    
+    see(){
+        var node = this.top;
+        while (node != null) {
+            console.log(node.data);
+            node = node.next;
+            console.clear();
+        }
+    };
+};
 //------------------------------------Programa-------------------------------------------------------------------------------------------
 class Persona{
     constructor(username,telefono,correo,ciudad,password){
@@ -141,6 +192,7 @@ class Persona{
         this.correo=correo;
         this.ciudad=ciudad;
         this.password=password; 
+        this.historial; 
     }
 }
 //--------------------------------------------------------------------------------------------------------------------------------------
@@ -157,6 +209,7 @@ class usuario extends Persona{
         } 
         if (confirmacion = false){
         const contra = new contrato(this.username,proveedor,date);
+        this.historial.AñadirContrato(contra);
         contra.estado="en comienzo"; 
         return contra; 
         }
@@ -239,61 +292,18 @@ class calificacion {
         this.contrato=null; 
     }
 }
-
-
-class Stack extends Node{
-    constructor(data, next, prev){
-        super(data, next, prev);
+//-----------------------------------------------------------------------------------------------------------------------------------------
+class historial {
+    constructor(){
+        this.Stack = new Stack(); 
     }
-    addToStack(data){
-        const newNode = new Node(data, this.head,null);
-
-        if(this.head){
-            newNode.next = this.head;
-            this.head.prev = newNode;
-            this.head = newNode;
-        }else{
-            this.head = newNode;
-            this.tail = newNode;
-        };
-        this.size++;
-    };
-    getStack(this){
-        if (this.head == null){
-            console.log("No hay nada almacenado");
-            return
+    AddContrato(contrato){
+        this.Stack.push(contrato); 
+    }
+    Mostrarcontratos(){
+        const aux = this.Stack; 
+        while(aux.top.next!=null){
+            aux.pop(); 
         }
-        currentNode = this.head;
-
-        while (true) {
-            if (currentNode == null){
-                break
-            }
-            console.log(currentNode.data);
-            currentNode = currentNode.next;    
-        }
-    };
-}
-
-class GenerarHistorial{
-    constructor(contrato){
-        this.contrato=contrato;
     }
-    guardarData(contrato){
-        
-        const Stack0 = Stack.addToStack(contrato);
-    }
-    
-}
-
-class Historial{
-    constructor(contrato){
-        this.Stack0 = GenerarHistorial.guardarData(contrato);
-
-    }
-    mostrarHistorial(Stack0){
-        Stack.getStack(Stack0);
-
-    }
-    
 }
