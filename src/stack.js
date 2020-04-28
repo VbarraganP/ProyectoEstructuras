@@ -21,9 +21,7 @@ function generateHistory(pila) {
             cita: cita
         };
 
-        const objNode = new SNode(data);
-
-        pila.push(objNode);
+        pila.push(data);
     }
 }
 class SNode {

@@ -307,3 +307,132 @@ class historial {
         }
     }
 }
+//-------------------------------------------------- Pruebas con los datos -----------------------------------------------------------------
+const faker = require("faker");
+const fs = require("fs");
+// funciones generadoras de datos mediante faker de Node.js
+function generateClient(lista) {
+    //Generamos el numero de datos requeridos:
+    for (let id = 1; id <= 10000; id++) {
+
+        const firstName = faker.name.firstName();
+        const lastName = faker.name.lastName();
+        const phoneNumber = faker.phone.phoneNumber();
+        const city = 'Bogota';
+        const email = faker.internet.email();
+
+        //Creamos los datos de prueba 
+        let data = {
+            id: id,
+            firstname: firstName,
+            lastname: lastName,
+            phoneNumber: phoneNumber,
+            city: city,
+            email: email,
+        };
+        //llamamos el metodo que introduce los datos en la estructura
+        lista.addToTail(data);
+    }
+}
+
+function generateProv(lista) {
+    //Generamos el numero de datos requeridos:
+    for (let id = 1; id <= 10000; id++) {
+
+        const firstName = faker.name.firstName();
+        const lastName = faker.name.lastName();
+        const phoneNumber = faker.phone.phoneNumber();
+        const city = 'Bogota';
+        const email = faker.internet.email();
+        const score = faker.random.number();
+        const description = faker.random.words(20);
+        const owner = faker.name.firstName();
+
+        //creamos los datos de prueba
+        let data = {
+            id: id,
+            firstname: firstName,
+            lastname: lastName,
+            phoneNumber: phoneNumber,
+            city: city,
+            email: email,
+            score: score,
+            description: description,
+            owner: owner
+        };
+        // los añadimos a la estructura
+        lista.addToTail(data);
+    }
+}
+
+function generateHistory(pila) {
+    //Generamos el numero de datos requeridos:
+    for (let id = 1; id <= 10000; id++) {
+
+        const usuario = faker.name.findName();
+        const proveedor = faker.name.findName();
+        const estado = faker.random.boolean();
+        const pago = faker.commerce.price();
+        const cita = faker.date.weekday();
+
+        let data = {
+            id: id,
+            usuario: usuario,
+            proveedor: proveedor,
+            estado: estado,
+            pago: pago,
+            cita: cita
+        };
+
+        pila.push(data);
+    }
+}
+
+// ¿ COMO MEDIMOS EL TIEMPO ? 
+
+//Definimos de que manera vamos a medir el tiempo, para medir el tiempo usamos process.hrtime() la cual nos devuelve un arreglo con dos valores coreespondientes a el tiempo inicial y el tiempo final, posteriormente se realiza la diferencia entre estos dos valores y devuelve el tiempo en nanosegundos esto con el fin de ser lo mas preciso posible en la toma de los tiempos:
+//Este metodo nos permite tener varios cronometros , los cuales pueden medir el tiempo simultaneamente, asi para iniciar un nuevo cronometro usamos la siguiente linea de codigo:
+let NombreDelCronometro = process.hrtime();
+// todos los procesos/funciones/metodos a evualuar los ponemos justo despues de iniciarlizar el cronometro:
+/*
+
+    Procesos a evaluar
+
+*/
+//finalizamos el cronometro con la siguiente linea:
+let diff = process.hrtime(NombreDelCronometro);
+// y mostramos el resultado del cronometro mediante:
+console.log(`Operation took ${diff[0] * 1e9 + diff[1]} nanoseconds`);
+// este metodo fue usado para calcular los tiempos que se muestran en el documento escrito
+
+
+
+//--------------------------- creamos las estructuras que vamos a usar ---------------------------------------------
+
+
+//Creamos una pila la cual contendra los historiales de contratos
+let pilaHistorial = new Stack();
+generateHistory(pilaHistorial);
+//Medimos el tiempo que tomaba mostrar la pila completa
+pilaHistorial.see();
+
+
+//creamos listas doblemente enlazadas para guardar a los usuarios y los provedores
+//Clientes:
+let listaClientes = new DobleLinkedList();
+//medimos el tiempo que toma cargar todos los datos a la lista
+generateClient(listaClientes);
+
+//proveedores:
+let listaProveedores = new DobleLinkedList();
+generateClient(listaProveedores);
+//medimos el tiempo que toma eliminar un dato de la lista
+//let objetoEliminar = null;
+
+// en este caso el valor es null porque depende de los datos cargados por faker y cada vez que se ejecuta el escript genera nuevo datos aleatorios. 
+
+//listaProveedores.removeData(objetoEliminar);
+
+//Tambien calculamos el tiempo que toma mostrar todos los datos de la lista
+listaProveedores.see();
+

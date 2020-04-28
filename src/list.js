@@ -26,9 +26,8 @@ function generateClient(lista) {
             description: description,
             owner: owner
         };
-        const objNode = new Node(data, null, null);
 
-        lista.addToTail(objNode);
+        lista.addToTail(data);
     }
 }
 
