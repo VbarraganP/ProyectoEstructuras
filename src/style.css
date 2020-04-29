@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  .container {
+    width: 90%;
+    margin: auto;
+  }
+  .nav-main {
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 20px 0;
+  }
+  
+  .nav-brand {
+    width: 100px;
+  }
+.nav-menu{
+    display: inline-flex;
+}
+.nav-menu li{
+    padding: 1cm;
+}
+.profesiones{
+    height: 200px;
+    width: 100%;
+}
+.columna{
+    display: block;
+    padding: 1cm;
+    align-items: center;
+}
+.service{
+    display: flex;
+    align-items: center;
+}
+.profesionesref{
+    align-items: center;
+}
+.login {
+    width: 320px;
+    height: 420px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+  }
+  
+  .login .logologin {
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+  }
+  
+  .login h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .login label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .login input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .login input[type="text"], .login-box input[type="password"] {
+    border: none;
+    border-bottom: 1px solid ;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .login input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    font-size: 18px;
+    color:white;
+    background-color: rosybrown;
+    border-radius: 20px;
+  }
+  
+  .login input[type="submit"]:hover {
+    cursor: pointer;
+  }
+  
+  .login a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+
+  }
+  
+  .login a:hover {
+
+  }

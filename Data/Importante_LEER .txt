@@ -1,0 +1,7 @@
+Github no deja subir archivos con mas de 100.00 MB , por lo tanto obtamos por subir
+los datos de prueba a un Drive y compartir el link:
+
+https://drive.google.com/drive/folders/1krFUfwXZEI9t7xTV8MYDfjmKoO2zE2AV?usp=sharing
+
+Nota: Los datos estan hasta 1 millon de objetos los cuales tienen en promedio 7 datos ,
+por lo tanto el numero maximo de datos que se pudo subir fue de 7 millones de datos.
