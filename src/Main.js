@@ -476,5 +476,5 @@ generateClient(listaProveedores);
 //listaProveedores.removeData(objetoEliminar);
 
 //Tambien calculamos el tiempo que toma mostrar todos los datos de la lista
-listaProveedores.see();
+//listaProveedores.see();
 
