@@ -131,6 +131,14 @@ class DobleLinkedList{
     isEmpty(){
         return this.size === 0;
     };
+    see() {
+        var node = this.head;
+        while (node != null) {
+            console.log(node.data);
+            node = node.next;
+            console.clear();
+        }
+    };
     
 };
 
