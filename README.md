@@ -5,5 +5,5 @@ Para ejecutar el proyecto se debe descargar node y desde la terminar usar el sig
 
 npm init -y
 
-/n
+
 npm i faker
