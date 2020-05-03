@@ -4,4 +4,6 @@ ADVERTENCIA:
 Para ejecutar el proyecto se debe descargar node y desde la terminar usar el siguiente comando para descargar los modulos de node
 
 npm init -y
+
+/n
 npm i faker
