@@ -11,6 +11,9 @@
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <!--Firestore-->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
 </head>
 
 
@@ -65,22 +68,16 @@
                         <div class="form-group">
                         <select id="serviceType" name="service"  class="form-control">
                             <option value="null">Tipo de servicio</option>
-                            <option value="Servicio1">Servicio1</option>
-                            <option value="Servicio2">Servicio2</option>
-                            <option value="Servicio3">Servicio3</option>
-                            <option value="Servicio4">Servicio4</option>
-                            <option value="Servicio5">Servicio5</option>
-                            <option value="Servicio6">Servicio6</option>
-                            <option value="Servicio7">Servicio7</option>
-                            <option value="Servicio8">Servicio8</option>
-                            <option value="Servicio9">Servicio9</option>
+                            <option value="Servicio1">Cerrajeria</option>
+                            <option value="Servicio2">Plomeria</option>
+                            <option value="Servicio3">Electricista</option>
                         </select>
                         </div>
                         <div class="form-group">
-                            <textarea type="text" maxlength="300" style="height:125px"  class="form-control">Describe tu servicio </textarea>
+                            <textarea type="text" maxlength="300" style="height:125px" id="description" class="form-control">Describe tu servicio </textarea>
                         </div>
                       
-                        <input type="submit" value="Save" class="btn btn-primary btn-block">
+                        <input type="button" value="Registrar" onclick="registrarProveedor()" class="btn btn-primary btn-block">
                   </form>
               </div>
           </div>
@@ -88,9 +85,6 @@
           <div id="product-list" class="col-md-8"></div>
       </div>
   </div>
-    
-    
- 
-    
+  <script src="app.js"></script>
 </body>
 </html>

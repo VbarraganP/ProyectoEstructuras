@@ -485,4 +485,3 @@ generateClient(listaProveedores);
 
 //Tambien calculamos el tiempo que toma mostrar todos los datos de la lista
 //listaProveedores.see();
-

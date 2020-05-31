@@ -10,7 +10,9 @@
   ul {
     list-style: none;
   }
-  
+  button{
+    width: 100px;
+  }
   .container {
     width: 90%;
     margin: auto;
@@ -118,6 +120,4 @@
 
   }
   
-  .login a:hover {
-
-  }
+ 

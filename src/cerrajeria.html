@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiApp</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/minty/bootstrap.min.css">
+    <script src="Main.js"></script>
+    <!--Firestore-->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class=container>
+        <!-- Navigation -->
+    <nav class="nav-main">
+        <!-- Brand -->
+        <img src="img/pngtree-gear-setting-cogs-abstract-flat-color-icon-template-png-image_1655070 (1).jpg" alt="Logo" class="nav-brand">
+        <!-- Left Nav -->
+        <ul class="nav-menu">
+          <li>
+            <a href="index.html">Inicio</a>
+          </li>
+          <li>
+            <a href="login.html">Iniciar Sesión</a>
+          </li>
+          <li>
+            <a href="registroProveedor.html">Registrarse como proveedor</a>
+          </li>
+        </ul>
+    </nav>
+    <div id="info">
+        
+    </div>
+    </div>
+    <script>
+        console.log('listo'); 
+    // Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+    apiKey: "AIzaSyDsVlkk8Jtn0Rrk2R3BFzIP8gXn5XR649E",
+    authDomain: "proyectoserviapp.firebaseapp.com",
+    projectId: "proyectoserviapp",
+    });
+  
+    var db = firebase.firestore();
+    db.collection("Proveedores").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+        // falta escribir en el HTML los proveedores que estan en consola. 
+    });
+    });
+    </script>
+</body>
+</html>
