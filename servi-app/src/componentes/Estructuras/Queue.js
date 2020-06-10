@@ -1,41 +1,36 @@
 class Queue {
     constructor() {
-        this.head = null;
-        this.tail = null;
-        this.lenght = 0;
-    };
+        this.items = [];
+    } 
 
-    enqueue(data) {
-        const node = new SNode(data);
-
-        if (this.head) {
-            this.tail.next = node;
-            this.tail = node;
-        } else {
-            this.head = node;
-            this.tail = node;
-        };
-        this.lenght++;
-    };
+    enqueue(element) {
+        this.items.push(element);
+    } 
 
     dequeue() {
-        const current = this.head;
-        this.head = this.head.next;
-        this.lenght--;
-
-        return current.value;
-    };
+        if (this.isEmpty())
+            return "Underflow";
+        return this.items.shift();
+    } 
 
     getSize() {
-        return this.lenght;
+        return this.items.length;
     };
 
     isEmpty() {
-        return this.lenght === 0;
-    };
+        return this.items.length == 0;
+    } 
 
     peek() {
-        return this.head.value;
-    };
+        if (this.isEmpty())
+            return "No elements in Queue";
+        return this.items[0];
+    } 
+    printQueue() {
+        let str = "";
+        for (var i = 0; i < this.items.length; i++)
+            str += this.items[i] + " ";
+        return str;
+    } 
 
 };

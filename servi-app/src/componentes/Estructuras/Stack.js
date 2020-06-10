@@ -1,51 +1,35 @@
-class SNode {
-    constructor(data) {
-        this.data = data;
-        this.next = null;
-    };
-};
 class Stack {
     constructor() {
-        this.top = null;
-        this.lenght = 0;
-    };
+        this.items = [];
+    } 
 
-    push(data) {
-        const newNode = new SNode(data);
-        newNode.next = this.top;
-        this.top = newNode;
-        this.lenght++;
-    };
+    push(element) {
+        this.items.push(element);
+    } 
 
     pop() {
-        if (this.top === null) {
-            return null;
-        };
-        const valueToReturn = this.top;
-        this.top = this.top.next;
-        this.lenght--;
-        return valueToReturn;
-    };
+        if (this.items.length == 0)
+            return "Underflow";
+        return this.items.pop();
+    } 
 
     getSize() {
-        return this.lenght;
+        return this.items.length;
     };
 
     isEmpty() {
-        return this.top === null;
-    };
+        return this.items.length == 0;
+    } 
 
     peek() {
-        return this.top;
-    };
+        return this.items[this.items.length - 1];
+    } 
 
-    see() {
-        var node = this.top;
-        while (node != null) {
-            console.log(node.data);
-            node = node.next;
-            console.clear();
-        }
-    };
+    printStack() {
+        let str = "";
+        for (var i = 0; i < this.items.length; i++)
+            str += this.items[i] + " ";
+        return str;
+    } 
 };
 

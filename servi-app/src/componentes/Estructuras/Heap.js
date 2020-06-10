@@ -5,7 +5,7 @@ class Heap {
         this.size = 0;
     }
     SiftUp(i) {
-        var aux;
+        let aux;
         while (i > 1 && this.Array[i / 2] < this.Array[i]) {
             aux = this.Array[i / 2];
             this.Array[i / 2] = this.Array[i];
@@ -14,13 +14,13 @@ class Heap {
         }
     }
     SiftDown(i) {
-        var maxindex = i;
-        var leftchild = 2 * i;
-        var aux;
+        let maxindex = i;
+        let leftchild = 2 * i;
+        let aux;
         if (leftchild <= this.Array.length && this.Array[leftchild] > this.Array[maxindex]) {
             maxindex = leftchild;
         }
-        var rightchild = (2 * i) + 1;
+        let rightchild = (2 * i) + 1;
         if (rightchild <= this.Array.lenght && this.Array[rightchild] > this.Array[maxindex]) {
             maxindex = rightchild;
         }
@@ -34,7 +34,7 @@ class Heap {
     Insert(data) {
         if (this.Array.lenght = this.maxsize) {
             this.maxsize = this.maxsize * 2;
-            var aux = new Array(this.maxsize);
+            let aux = new Array(this.maxsize);
             for (j = 0; j < this.Array.lenght; j++) {
                 aux[j] = this.Array[j];
             }
@@ -45,14 +45,14 @@ class Heap {
         SiftUp(this.size);
     }
     ExtractMax() {
-        var result = this.Array[1];
+        let result = this.Array[1];
         this.Array[1] = this.Array[this.size];
         this.size = this.size - 1;
         SiftDown(1);
         return result;
     }
     Changepriority(i, data) {
-        var olddata = this.Array[i];
+        let olddata = this.Array[i];
         this.Array[i] = data;
         if (data > olddata) {
             SiftUp(i);
