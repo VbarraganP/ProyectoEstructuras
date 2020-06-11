@@ -8,7 +8,7 @@ import Faucets from "../../resources/Faucets.jpg";
 
 class Services extends Component {
     
-    render() {
+    render(){
         return (
             <div >
                 <div className="container">
@@ -19,7 +19,7 @@ class Services extends Component {
                     <div className="row">
                         <div className="col-sm">
                             <img src={DoorKey} className="" height="200px" width="100%"/>
-                            <a href="" className="" >
+                            <a href="" className="">
                                 Cerrajería
                             </a>
                         </div>

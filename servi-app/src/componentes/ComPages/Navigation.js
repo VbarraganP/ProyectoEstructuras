@@ -15,7 +15,6 @@ class Navigation extends Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.renderLoginButton = this.renderLoginButton.bind(this);
   }
-
   componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user });

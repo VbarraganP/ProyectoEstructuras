@@ -35,8 +35,7 @@ class BodyPages extends Component {
         } else {
             return (
                 <div>
-                    
-                    <Services />
+                     <EditProfile />
                 </div>
             )
         };
