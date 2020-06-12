@@ -23,7 +23,7 @@ class EditProfile extends Component{
         let correo = this.state.user.email; 
         let ciudad = document.getElementById('ciudadclient').value; 
         let contrasena = document.getElementById('passwordclient').value; 
-        db.collection("usuarios").get().then((querySnapshot) => {
+        /* db.collection("usuarios").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                if(doc.data().correo == correo){
                    comprobacion=true; 
@@ -32,7 +32,7 @@ class EditProfile extends Component{
         });
         if (comprobacion){
             console.log('Ya registrado loco'); 
-        }else {
+        }else { */
         db.collection("usuarios").add({
         username: username,
         telefono: telefono,
@@ -46,7 +46,7 @@ class EditProfile extends Component{
         .catch(function(error) {
         console.error("Error adding document: ", error);
         })
-        };
+         // };
     }
     registrarProveedor(){
         let db = firebase.firestore(); 
@@ -58,7 +58,7 @@ class EditProfile extends Component{
         let contrasena = document.getElementById('password').value; 
         let servicio = document.getElementById('serviceType').value; 
         let description = document.getElementById('description').value; 
-        db.collection("Proveedores").get().then((querySnapshot) => {
+        /* db.collection("Proveedores").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                if(doc.data().correo == correo){
                    comprobacion=true; 
@@ -67,7 +67,7 @@ class EditProfile extends Component{
         });
         if (comprobacion){
             console.log('Ya registrado loco'); 
-        }else {
+        }else { */ 
         db.collection("Proveedores").add({
             username: username,
             telefono: telefono,
@@ -83,7 +83,7 @@ class EditProfile extends Component{
         .catch(function(error) {
             console.error("Error adding document: ", error);
         });
-        }
+        //}
     }
     render(){
         return (
