@@ -1,9 +1,18 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+
 import React, { Component } from 'react';
 //import firebase from 'firebase';
 import Navigation from '../ComPages/Navigation.js';
 import BodyPages from '../ComPages/BodyPages.js';
 
 import './App.css';
+
 class App extends Component {
   render(){
     return(
@@ -13,6 +22,7 @@ class App extends Component {
       </div>
     )
   }
+  
 };
 
 export default App;
