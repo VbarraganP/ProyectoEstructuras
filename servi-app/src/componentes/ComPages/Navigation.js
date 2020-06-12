@@ -3,6 +3,24 @@ import firebase from "firebase";
 
 import Logo from "../../resources/LogoServiApp.jpg";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+
+import FileUpload from "./FileUpload.js";
+
+import BodyPages from "./BodyPages"
+//paginas derivadas
+import Services from "./Services.js";
+import Posts from "./Posts.js";
+import EditProfile from "./EditProfile.js";
+
+
+
 class Navigation extends Component {
   //gestor de estados
   constructor() {
@@ -42,13 +60,8 @@ class Navigation extends Component {
     //si el usuario esta logueado
     if (this.state.user) {
       return (
-        <div className="container mr-40">
-          <p className="nav-item active">
-            <a className="nav-link">
-              {" "}
-              Bienvenido {this.state.user.displayName}{" "}
-            </a>
-          </p>
+        <div className="container ">
+         
           <img
             src={this.state.user.photoURL}
             alt={this.state.user.displayName}
@@ -57,6 +70,12 @@ class Navigation extends Component {
             height="60"
             type="button"
           ></img>
+          <p className="nav-item active">
+            <a className="nav-link">
+              {" "}
+              Bienvenido {this.state.user.displayName}{""}
+            </a>
+          </p>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>
             salir 
           </button>
@@ -71,10 +90,14 @@ class Navigation extends Component {
       );
     }
   }
+
+
+  
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-md bg-dark navbar-dark text-white justify-content-between">
+        <nav id="01" className="navbar navbar-expand-md bg-dark navbar-dark text-white justify-content-between">
+        
           <a className="navbar-brand ">
             <img
               src={Logo}
@@ -83,8 +106,11 @@ class Navigation extends Component {
               width="60"
               height="60"
             ></img>
+            
           </a>
+         
           {this.renderLoginButton()}
+          
         </nav>
 
 
