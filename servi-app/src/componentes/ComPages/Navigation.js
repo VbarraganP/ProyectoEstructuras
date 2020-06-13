@@ -119,9 +119,7 @@ class Navigation extends Component {
             <Link to="/EditProfile" className="btn btn-dark" >
                 EditProfile
             </Link>
-            <Link to="/Posts" className="btn btn-dark" >
-                Posts
-            </Link>
+            
             <Link to="/FileUpload" className="btn btn-dark" >
                 FileUpload
             </Link>

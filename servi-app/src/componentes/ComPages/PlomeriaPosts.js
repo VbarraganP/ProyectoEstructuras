@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 
-class CerrajeriaPosts extends Component {
+class PlomeriaPosts extends Component {
     state = {
         items : [] 
     }
@@ -45,4 +45,4 @@ class CerrajeriaPosts extends Component {
         );
     };
 }
-export default CerrajeriaPosts; 
+export default PlomeriaPosts; 

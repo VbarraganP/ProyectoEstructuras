@@ -7,6 +7,8 @@ import Posts from "./Posts.js";
 import EditProfile from "./EditProfile.js";
 import Navigation from "./Navigation";
 import CerrajeriaPosts from "./CerrajeriaPosts.js";
+import PlomeriaPosts from "./PlomeriaPosts.js";
+import ElectricistaPosts from "./ElectricistaPosts.js";
 import {
     BrowserRouter,
     Switch,
@@ -42,8 +44,16 @@ class BodyPages extends Component {
                             <EditProfile/>
                         </Route>
 
-                        <Route path="/Posts">
+                        <Route path="/CerrajeriaPosts">
                             <CerrajeriaPosts/>
+                        </Route>
+
+                        <Route path="/PlomeriaPosts">
+                            <PlomeriaPosts/>
+                        </Route>
+
+                        <Route path="/ElectricistaPosts">
+                            <ElectricistaPosts/>
                         </Route>
 
                         <Route path="/FileUpload">

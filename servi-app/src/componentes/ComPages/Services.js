@@ -3,7 +3,13 @@ import React, { Component } from "react";
 import DoorKey from "../../resources/doorKey.jpg";
 import Electrical from "../../resources/Electrical.jpg";
 import Faucets from "../../resources/Faucets.jpg";
-
+import {
+    BrowserRouter,
+    Switch,
+    Route,
+    Link,
+    withRouter
+  } from "react-router-dom";
 
 
 class Services extends Component {
@@ -19,21 +25,21 @@ class Services extends Component {
                     <div className="row">
                         <div className="col-sm">
                             <img src={DoorKey} className="" height="200px" width="100%"/>
-                            <a href="" className="">
+                            <Link to="/CerrajeriaPosts" className="">
                                 Cerrajería
-                            </a>
+                            </Link>
                         </div>
                         <div className="col-sm">
                             <img src={Faucets} className="" height="200px" width="100%" />
-                            <a href="" className="" >
+                            <Link to="/PlomeriaPosts" className="" >
                                 Plomeria
-                            </a>
+                            </Link>
                         </div>
                         <div className="col-sm">
                             <img src={Electrical} className="" height="200px" width="100%" />
-                            <a href="" className="" >
+                            <Link to="/ElectricistaPosts" className="" >
                                 Electrico
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
