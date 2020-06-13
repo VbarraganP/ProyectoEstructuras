@@ -4,10 +4,11 @@ import firebase from "firebase";
 import Logo from "../../resources/LogoServiApp.jpg";
 
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Switch,
   Route,
-  Link
+  Link,
+  withRouter
 } from "react-router-dom";
 
 
@@ -61,7 +62,6 @@ class Navigation extends Component {
     if (this.state.user) {
       return (
         <div className="container ">
-         
           <img
             src={this.state.user.photoURL}
             alt={this.state.user.displayName}
@@ -70,6 +70,8 @@ class Navigation extends Component {
             height="60"
             type="button"
           ></img>
+         
+          
           <p className="nav-item active">
             <a className="nav-link">
               {" "}
@@ -98,7 +100,9 @@ class Navigation extends Component {
       <div>
         <nav id="01" className="navbar navbar-expand-md bg-dark navbar-dark text-white justify-content-between">
         
-          <a className="navbar-brand ">
+         {/* para que esto funcione, el "link" debe de estar encerrado por un BrowserRouter por lo que se ejecuta <Navigation/> dentro de bodyStatus  */} 
+         {/* Anteriormente lo que correspondia a este <link> era un <a> */}
+          <Link to="/Services">
             <img
               src={Logo}
               alt="Logo"
@@ -107,12 +111,26 @@ class Navigation extends Component {
               height="60"
             ></img>
             
-          </a>
-         
+          </Link>
+          <div className="btn-group">
+            <Link to="/Services" className="btn btn-dark" >
+                Services
+            </Link>
+            <Link to="/EditProfile" className="btn btn-dark" >
+                EditProfile
+            </Link>
+            <Link to="/Posts" className="btn btn-dark" >
+                Posts
+            </Link>
+            <Link to="/FileUpload" className="btn btn-dark" >
+                FileUpload
+            </Link>
+          </div>
+          
           {this.renderLoginButton()}
           
         </nav>
-
+        
 
       </div>
     );
