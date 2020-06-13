@@ -2,7 +2,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  withRouter
 } from "react-router-dom";
 
 
@@ -17,7 +18,7 @@ class App extends Component {
   render(){
     return(
       <div className="App">
-        <Navigation/>
+        
         <BodyPages/>
       </div>
     )

@@ -5,9 +5,9 @@ import firebase from "firebase";
 import Services from "./Services.js";
 import Posts from "./Posts.js";
 import EditProfile from "./EditProfile.js";
-
+import Navigation from "./Navigation";
 import {
-    BrowserRouter as Router,
+    BrowserRouter,
     Switch,
     Route,
     Link,
@@ -24,26 +24,16 @@ class BodyPages extends Component {
     renderWithBodyStatus(){
         
         return(
-            <Router>
+            <BrowserRouter>
+
+                <Navigation/>
+
                 <div className = "container mt-5">
-                    <div className="btn-group">
-                        <Link to="/" className="btn btn-dark" >
-                            Services
-                        </Link>
-                        <Link to="/EditProfile" className="btn btn-dark" >
-                            EditProfile
-                        </Link>
-                        <Link to="/Posts" className="btn btn-dark" >
-                            Posts
-                        </Link>
-                        <Link to="/FileUpload" className="btn btn-dark" >
-                            FileUpload
-                        </Link>
-                    </div>
+              
                   
                     <hr/>
                     <Switch>
-                        <Route path="/" exact >
+                        <Route path="/Services">
                             <Services/>
                         </Route>
 
@@ -61,7 +51,7 @@ class BodyPages extends Component {
                     </Switch>
 
                 </div>
-            </Router>
+            </BrowserRouter>
 
         );
     }
