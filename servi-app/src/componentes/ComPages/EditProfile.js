@@ -107,7 +107,7 @@ class EditProfile extends Component{
             if (comprobacion){
                 console.log('1'); 
             }else { */
-            db.collection("Proveedores").get().then((querySnapshot) => {
+            db.collection("ProveedoresPlomeria").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     if (contador<doc.data().contador){
                           contador = doc.data().contador; 
@@ -143,9 +143,9 @@ class EditProfile extends Component{
             if (comprobacion){
                 console.log('1'); 
             }else { */
-            db.collection("Proveedores").get().then((querySnapshot) => {
+            db.collection("ProveedoresElectricista").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    if (contador<doc.data().contador){
+                    if (contador< doc.data().contador){
                           contador = doc.data().contador; 
                     }
                 });
