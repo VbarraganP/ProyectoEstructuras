@@ -51,6 +51,7 @@ class EditProfile extends Component{
     registrarProveedor(){
         var db = firebase.firestore(); 
         var comprobacion= false; 
+        var contador = 0; 
         var username = document.getElementById('name').value;
         var telefono = document.getElementById('telefono').value;
         var correo = this.state.user.email; 
@@ -59,7 +60,7 @@ class EditProfile extends Component{
         var servicio = document.getElementById('serviceType').value; 
         var description = document.getElementById('description').value; 
         if (servicio =="Cerrajeria"){
-        db.collection("Proveedores").get().then((querySnapshot) => {
+       /* db.collection("Proveedores").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                if(doc.data().correo == correo){
                    comprobacion=true; 
@@ -68,7 +69,14 @@ class EditProfile extends Component{
         });
         if (comprobacion){
             console.log('1'); 
-        }else { 
+        }else { */
+        db.collection("Proveedores").get().then((querySnapshot) => {
+             querySnapshot.forEach((doc) => {
+               if (contador<doc.data().contador){
+                   contador = doc.data().contador; 
+               }
+            });
+        });
         db.collection("Proveedores").add({
             username: username,
             telefono: telefono,
@@ -77,7 +85,8 @@ class EditProfile extends Component{
             contrasena: contrasena,
             servicio:servicio, 
             descripcion:description,
-            calificacion : "0"
+            calificacion : "0", 
+            contador: contador+1
         })
         .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
@@ -85,10 +94,10 @@ class EditProfile extends Component{
         .catch(function(error) {
             console.error("Error adding document: ", error);
         });
-        };
+        //};
         }
         else if (servicio=="Plomeria"){
-            db.collection("ProveedoresPlomeria").get().then((querySnapshot) => {
+          /*  db.collection("ProveedoresPlomeria").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                    if(doc.data().correo == correo){
                        comprobacion=true; 
@@ -97,7 +106,14 @@ class EditProfile extends Component{
             });
             if (comprobacion){
                 console.log('1'); 
-            }else { 
+            }else { */
+            db.collection("Proveedores").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    if (contador<doc.data().contador){
+                          contador = doc.data().contador; 
+                    }
+                });
+            });
             db.collection("ProveedoresPlomeria").add({
                 username: username,
                 telefono: telefono,
@@ -106,7 +122,8 @@ class EditProfile extends Component{
                 contrasena: contrasena,
                 servicio:servicio, 
                 descripcion:description,
-                calificacion : "0"
+                calificacion : "0", 
+                contador:contador+1
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
@@ -114,9 +131,9 @@ class EditProfile extends Component{
             .catch(function(error) {
                 console.error("Error adding document: ", error);
             });
-            };   
+           // };   
         }else {
-            db.collection("ProveedoresElectricista").get().then((querySnapshot) => {
+           /* db.collection("ProveedoresElectricista").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                    if(doc.data().correo == correo){
                        comprobacion=true; 
@@ -125,7 +142,14 @@ class EditProfile extends Component{
             });
             if (comprobacion){
                 console.log('1'); 
-            }else { 
+            }else { */
+            db.collection("Proveedores").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    if (contador<doc.data().contador){
+                          contador = doc.data().contador; 
+                    }
+                });
+            });
             db.collection("ProveedoresElectricista").add({
                 username: username,
                 telefono: telefono,
@@ -134,7 +158,8 @@ class EditProfile extends Component{
                 contrasena: contrasena,
                 servicio:servicio, 
                 descripcion:description,
-                calificacion : "0"
+                calificacion : "0", 
+                contador: contador+1
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
@@ -142,7 +167,7 @@ class EditProfile extends Component{
             .catch(function(error) {
                 console.error("Error adding document: ", error);
             });
-            };
+            // };
         }
     }
     render(){
