@@ -6,6 +6,7 @@ import Services from "./Services.js";
 import Posts from "./Posts.js";
 import EditProfile from "./EditProfile.js";
 import Navigation from "./Navigation";
+import CerrajeriaPosts from "./CerrajeriaPosts.js";
 import {
     BrowserRouter,
     Switch,
@@ -42,7 +43,7 @@ class BodyPages extends Component {
                         </Route>
 
                         <Route path="/Posts">
-                            <Posts/>
+                            <CerrajeriaPosts/>
                         </Route>
 
                         <Route path="/FileUpload">

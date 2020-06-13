@@ -16,14 +16,14 @@ class EditProfile extends Component{
         });
     }
     registrarusuario(){
-        let db = firebase.firestore(); 
-        let comprobacion = false;
-        let username= document.getElementById('nameclient').value; 
-        let telefono = document.getElementById('telefonoclient').value;
-        let correo = this.state.user.email; 
-        let ciudad = document.getElementById('ciudadclient').value; 
-        let contrasena = document.getElementById('passwordclient').value; 
-        /* db.collection("usuarios").get().then((querySnapshot) => {
+        var db = firebase.firestore(); 
+        var comprobacion = false;
+        var username= document.getElementById('nameclient').value; 
+        var telefono = document.getElementById('telefonoclient').value;
+        var correo = this.state.user.email; 
+        var ciudad = document.getElementById('ciudadclient').value; 
+        var  contrasena = document.getElementById('passwordclient').value; 
+        db.collection("usuarios").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                if(doc.data().correo == correo){
                    comprobacion=true; 
@@ -32,7 +32,7 @@ class EditProfile extends Component{
         });
         if (comprobacion){
             console.log('Ya registrado loco'); 
-        }else { */
+        }else { 
         db.collection("usuarios").add({
         username: username,
         telefono: telefono,
@@ -46,19 +46,20 @@ class EditProfile extends Component{
         .catch(function(error) {
         console.error("Error adding document: ", error);
         })
-         // };
+        };
     }
     registrarProveedor(){
-        let db = firebase.firestore(); 
-        let comprobacion= false; 
-        let username = document.getElementById('name').value;
-        let telefono = document.getElementById('telefono').value;
-        let correo = this.state.user.email; 
-        let ciudad = document.getElementById('ciudad').value; 
-        let contrasena = document.getElementById('password').value; 
-        let servicio = document.getElementById('serviceType').value; 
-        let description = document.getElementById('description').value; 
-        /* db.collection("Proveedores").get().then((querySnapshot) => {
+        var db = firebase.firestore(); 
+        var comprobacion= false; 
+        var username = document.getElementById('name').value;
+        var telefono = document.getElementById('telefono').value;
+        var correo = this.state.user.email; 
+        var ciudad = document.getElementById('ciudad').value; 
+        var contrasena = document.getElementById('password').value; 
+        var servicio = document.getElementById('serviceType').value; 
+        var description = document.getElementById('description').value; 
+        if (servicio =="Cerrajeria"){
+        db.collection("Proveedores").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                if(doc.data().correo == correo){
                    comprobacion=true; 
@@ -66,8 +67,8 @@ class EditProfile extends Component{
             });
         });
         if (comprobacion){
-            console.log('Ya registrado loco'); 
-        }else { */ 
+            console.log('1'); 
+        }else { 
         db.collection("Proveedores").add({
             username: username,
             telefono: telefono,
@@ -75,7 +76,8 @@ class EditProfile extends Component{
             ciudad: ciudad, 
             contrasena: contrasena,
             servicio:servicio, 
-            descripcion:description
+            descripcion:description,
+            calificacion : "0"
         })
         .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
@@ -83,7 +85,65 @@ class EditProfile extends Component{
         .catch(function(error) {
             console.error("Error adding document: ", error);
         });
-        //}
+        };
+        }
+        else if (servicio=="Plomeria"){
+            db.collection("ProveedoresPlomeria").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                   if(doc.data().correo == correo){
+                       comprobacion=true; 
+                   }
+                });
+            });
+            if (comprobacion){
+                console.log('1'); 
+            }else { 
+            db.collection("ProveedoresPlomeria").add({
+                username: username,
+                telefono: telefono,
+                correo: correo, 
+                ciudad: ciudad, 
+                contrasena: contrasena,
+                servicio:servicio, 
+                descripcion:description,
+                calificacion : "0"
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+            };   
+        }else {
+            db.collection("ProveedoresElectricista").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                   if(doc.data().correo == correo){
+                       comprobacion=true; 
+                   }
+                });
+            });
+            if (comprobacion){
+                console.log('1'); 
+            }else { 
+            db.collection("ProveedoresElectricista").add({
+                username: username,
+                telefono: telefono,
+                correo: correo, 
+                ciudad: ciudad, 
+                contrasena: contrasena,
+                servicio:servicio, 
+                descripcion:description,
+                calificacion : "0"
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+            };
+        }
     }
     render(){
         return (
@@ -141,9 +201,9 @@ class EditProfile extends Component{
                                 <div className='form-group'>
                                 <select id="serviceType" name="service"  className='form-control'>
                                     <option value="null">Tipo de servicio</option>
-                                    <option value="Servicio1">Cerrajeria</option>
-                                    <option value="Servicio2">Plomeria</option>
-                                    <option value="Servicio2">Electricista</option>
+                                    <option value="Cerrajeria">Cerrajeria</option>
+                                    <option value="Plomeria">Plomeria</option>
+                                    <option value="Electricista">Electricista</option>
                                  </select>
                                 </div>
                                 <div className='form-group'>
