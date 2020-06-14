@@ -6,9 +6,9 @@ import Services from "./Services.js";
 import Posts from "./Posts.js";
 import EditProfile from "./EditProfile.js";
 import Navigation from "./Navigation";
-import CerrajeriaPosts from "./CerrajeriaPosts.js";
 import PlomeriaPosts from "./PlomeriaPosts.js";
 import ElectricistaPosts from "./ElectricistaPosts.js";
+import CerrajeriaPostsHeap from "./CerrajeriaPostsHeap.js";
 import {
     BrowserRouter,
     Switch,
@@ -44,8 +44,8 @@ class BodyPages extends Component {
                             <EditProfile/>
                         </Route>
 
-                        <Route path="/CerrajeriaPosts">
-                            <CerrajeriaPosts/>
+                        <Route path="/CerrajeriaPostsHeap">
+                            <CerrajeriaPostsHeap/>
                         </Route>
 
                         <Route path="/PlomeriaPosts">

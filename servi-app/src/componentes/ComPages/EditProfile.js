@@ -51,7 +51,7 @@ class EditProfile extends Component{
     registrarProveedor(){
         var db = firebase.firestore(); 
         var comprobacion= false; 
-        var contador = 0; 
+        var contador;
         var username = document.getElementById('name').value;
         var telefono = document.getElementById('telefono').value;
         var correo = this.state.user.email; 
@@ -70,14 +70,14 @@ class EditProfile extends Component{
         if (comprobacion){
             console.log('1'); 
         }else { */
-        db.collection("Proveedores").get().then((querySnapshot) => {
-             querySnapshot.forEach((doc) => {
-               if (contador<doc.data().contador){
-                   contador = doc.data().contador; 
-               }
+        db.collection("ProveedoresCerrajeria").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                if(doc.data().contador>contador){
+                    contador=doc.data().contador;  
+                }
             });
         });
-        db.collection("Proveedores").add({
+        db.collection("ProveedoresCerrajeria").add({
             username: username,
             telefono: telefono,
             correo: correo, 
@@ -109,8 +109,8 @@ class EditProfile extends Component{
             }else { */
             db.collection("ProveedoresPlomeria").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    if (contador<doc.data().contador){
-                          contador = doc.data().contador; 
+                    if(doc.data().contador>contador){
+                        contador=doc.data().contador;  
                     }
                 });
             });
@@ -145,8 +145,8 @@ class EditProfile extends Component{
             }else { */
             db.collection("ProveedoresElectricista").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    if (contador< doc.data().contador){
-                          contador = doc.data().contador; 
+                    if(doc.data().contador>contador){
+                        contador=doc.data().contador;  
                     }
                 });
             });
