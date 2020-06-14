@@ -17,6 +17,7 @@ import {
     NavLink
   } from "react-router-dom";
 import FileUpload from "./FileUpload.js";
+import CerrajeriaPosts from "./CerrajeriaPosts.js";
 
 const BodyStatus = 'null';
 

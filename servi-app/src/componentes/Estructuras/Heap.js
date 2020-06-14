@@ -2,11 +2,14 @@ import {Proveedor} from "../Usuarios/Proveedor.js"
 class Heap {
     constructor(maxsize) {
         this.Array = new Array(maxsize);
+        console.log(this.Array);
         this.maxsize = maxsize;
         this.size = 0;
     }
     SiftUp(i) {
         let aux;
+        //console.log(this.Array[1].puntuacion);
+        console.log(this.Array);
         while (i > 1 && this.Array[i / 2].puntuacion < this.Array[i].puntuacion) {
             aux = this.Array[i / 2];
             this.Array[i / 2] = this.Array[i];
@@ -33,13 +36,22 @@ class Heap {
         }
     }
     Insert(Proveedor) {
+
+        console.log("llega a insert heap");
+
+        console.log(Proveedor);
+        console.log(this.Array);
+        
         if (this.Array.lenght = this.maxsize) {
             this.maxsize = this.maxsize * 2;
             let aux = new Array(this.maxsize);
+            console.log(aux);
             for (let j = 0; j < this.Array.lenght; j++) {
                 aux[j] = this.Array[j];
             }
             this.Array = aux;
+            console.log(aux);
+            console.log(this.Array);
         }
         this.size = this.size + 1;
         this.Array[this.size] = Proveedor;

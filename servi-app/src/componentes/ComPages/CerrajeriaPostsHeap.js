@@ -1,16 +1,36 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import Heap from "../Estructuras/Heap.js";
-import proveedor from "../Usuarios/Proveedor.js";
+import Proveedor from "../Usuarios/Proveedor.js";
+
+import winston from "winston";
+
+var username = "";
+var telefono = ""; 
+var correo=""; 
+var ciudad = ""; 
+var puntuacion = ""; 
+var password = ""; 
+var descripcion = ""; 
+//var proveedor = ""; 
+
+
 class CerrajeriaPostsHeap extends Component{
+      
+
+
     constructor(){
         super();
         this.heap = new Heap (100);
         this.FirebaseToHeap= this.FirebaseToHeap.bind(this);
+
+
+
+
     }
     FirebaseToHeap(){
         var db= firebase.firestore();
-        db.collection("ProveedorCerrajeria").get().then(function(querySnapshot) {
+     /*    db.collection("ProveedorCerrajeria").get().then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
                 var username = doc.data().username;
                 var telefono = doc.data().telefono; 
@@ -20,10 +40,34 @@ class CerrajeriaPostsHeap extends Component{
                 var password = doc.data().contrasena; 
                 var descripcion = doc.data().descripcion; 
                 var proveedor = new proveedor(username,telefono,correo,ciudad,password,descripcion,puntuacion); 
-                this.heap.Insert(proveedor); 
-                console.log(ciudad);
+                //this.heap.Insert(proveedor); 
+                console.log("leandrooooo");
             });
+        }); */
+
+        db.collection('ProveedoresCerrajeria').get().then((snapShots)=> {
+            this.setState({
+                items: snapShots.docs.map( doc => {
+                    username = doc.data().username;
+                    telefono = doc.data().telefono; 
+                    correo=doc.data().correo; 
+                    ciudad = doc.data().ciudad; 
+                    puntuacion = parseInt(doc.data().calificacion); 
+                    password = doc.data().contrasena; 
+                    descripcion = doc.data().descripcion; 
+                    var proveedor2 = new Proveedor(username,telefono,correo,ciudad,password,descripcion,puntuacion);
+                    this.heap.Insert(proveedor2); 
+                    return {id : doc.id, data: doc.data()}
+                 })
+            })
+        }, error => {
+            console.log(error)
         });
+
+         
+
+        //telefono = items.data[0].telefono;
+        
         const {items}=this.heap.Array; 
         return (
             <table class="table">
@@ -39,8 +83,11 @@ class CerrajeriaPostsHeap extends Component{
             <tbody id="tabla">
             <tr>
                 <td>
-                    {this.heap.ExtractMax().username}
+                    {/*this.heap.ExtractMax().username*/}
+                    {puntuacion}
                 </td>
+                <td>xd</td>
+                <td>{items}</td>
             </tr>
                 {/* { items.map(item => 
                     <tr>
