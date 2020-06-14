@@ -67,10 +67,14 @@ class CerrajeriaPostsHeap extends Component{
          
 
         //telefono = items.data[0].telefono;
-        
+        const {aux}= new Array (this.heap.Array.size)
+        for (var i=0;i<this.heap.Array.size;i++){
+            aux[i]=this.heap.Array[i+1];
+        }
+        console.log(aux);
         const {items}=this.heap.Array; 
         return (
-            <table class="table">
+            <table className="table">
             <thead>
                 <tr>
                 <th scope="col">Proveedor</th>
@@ -84,10 +88,10 @@ class CerrajeriaPostsHeap extends Component{
             <tr>
                 <td>
                     {/*this.heap.ExtractMax().username*/}
-                    {puntuacion}
+                    {aux}
                 </td>
                 <td>xd</td>
-                <td>{items}</td>
+                <td>{aux}</td>
             </tr>
                 {/* { items.map(item => 
                     <tr>

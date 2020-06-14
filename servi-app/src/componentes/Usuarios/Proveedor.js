@@ -8,5 +8,8 @@ class Proveedor extends Persona {
         this.pago="";
         this.puntuacion = puntuacion;
     }
+    getPuntuacion(){
+        return this.puntuacion; 
+    }
 }
 export default Proveedor; 
