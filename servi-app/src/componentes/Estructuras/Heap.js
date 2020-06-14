@@ -1,4 +1,4 @@
-import Proveedor from "../Usuarios/Proveedor.js"
+import proveedor from "../Usuarios/Proveedor.js"
 class Heap {
     constructor(maxsize) {
         this.Array = new Array(maxsize);
@@ -7,11 +7,12 @@ class Heap {
     }
     SiftUp(i) {
         let aux;
-        while (i > 1 &&  this.Array[(i / 2)].puntuacion < this.Array[i].puntuacion  ) {
-            aux = this.Array[i / 2];
-            this.Array[i / 2] = this.Array[i];
+
+        while (i > 1 && this.Array[Math.floor(i / 2)].puntuacion < this.Array[i].puntuacion) {
+            aux = this.Array[Math.floor(i / 2)];
+            this.Array[Math.floor(i / 2)] = this.Array[i];
             this.Array[i] = aux;
-            i = i / 2;
+            i = Math.floor(i / 2);
         }
     }
     SiftDown(i) {
@@ -32,17 +33,16 @@ class Heap {
             this.SiftDown(maxindex);
         }
     }
-    Insert(Proveedor) {      
-         if (this.Array.size == this.maxsize) {
-            this.maxsize = this.maxsize * 2;
-            let aux = new Array(this.maxsize);
-            for (let j = 0; j < this.Array.lenght; j++) {
+    Insert(Proveedor) {
+        if (this.Array.size == this.maxsize) {
+           this.maxsize = this.maxsize * 2;
+           let aux = new Array(this.maxsize);
+           for (let j = 0; j < this.Array.lenght; j++) {
                 aux[j] = this.Array[j];
             }
-            this.Array = aux;
-        } 
+            this.Array=aux; 
+        }
         this.size = this.size + 1;
-        console.log(Proveedor.puntuacion);
         this.Array[this.size] = Proveedor;
         this.SiftUp(this.size);
     }

@@ -12,7 +12,7 @@ var ciudad = "";
 var puntuacion = ""; 
 var password = ""; 
 var descripcion = ""; 
-//var proveedor = ""; 
+//var proveedor = "";  
 
 
 class CerrajeriaPostsHeap extends Component{
@@ -21,31 +21,12 @@ class CerrajeriaPostsHeap extends Component{
 
     constructor(){
         super();
-        this.heap = new Heap (100);
+        this.heap = new Heap (6);
         this.FirebaseToHeap= this.FirebaseToHeap.bind(this);
-
-
-
-
     }
     FirebaseToHeap(){
         var db= firebase.firestore();
-     /*    db.collection("ProveedorCerrajeria").get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                var username = doc.data().username;
-                var telefono = doc.data().telefono; 
-                var correo=doc.data().correo; 
-                var ciudad = doc.data().correo; 
-                var puntuacion = parseInt(doc.data().calificacion); 
-                var password = doc.data().contrasena; 
-                var descripcion = doc.data().descripcion; 
-                var proveedor = new proveedor(username,telefono,correo,ciudad,password,descripcion,puntuacion); 
-                //this.heap.Insert(proveedor); 
-                console.log("leandrooooo");
-            });
-        }); */
-
-        db.collection('ProveedoresCerrajeria').get().then((snapShots)=> {
+        /* db.collection('ProveedoresCerrajeria').get().then((snapShots)=> {
             this.setState({
                 items: snapShots.docs.map( doc => {
                     username = doc.data().username;
@@ -56,23 +37,32 @@ class CerrajeriaPostsHeap extends Component{
                     password = doc.data().contrasena; 
                     descripcion = doc.data().descripcion; 
                     var proveedor2 = new Proveedor(username,telefono,correo,ciudad,password,descripcion,puntuacion);
-                    this.heap.Insert(proveedor2); 
+                    this.heap.Insert(proveedor2);
                     return {id : doc.id, data: doc.data()}
                  })
             })
         }, error => {
             console.log(error)
+        }); */
+        db.collection("ProveedoresCerrajeria").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                    username = doc.data().username;
+                    telefono = doc.data().telefono; 
+                    correo=doc.data().correo; 
+                    ciudad = doc.data().ciudad; 
+                    puntuacion = parseInt(doc.data().calificacion); 
+                    password = doc.data().contrasena; 
+                    descripcion = doc.data().descripcion; 
+                    var proveedor = new Proveedor(username,telefono,correo,ciudad,password,descripcion,puntuacion);
+                    this.heap.Insert(proveedor);
+            });
         });
-
-         
-
-        //telefono = items.data[0].telefono;
-        const {aux}= new Array (this.heap.Array.size)
-        for (var i=0;i<this.heap.Array.size;i++){
+        console.log(this.heap.Array);
+        const aux= new Array (this.heap.Array.size);
+         for (var i=0;i<this.heap.Array.size;i++){
             aux[i]=this.heap.Array[i+1];
-        }
-        console.log(aux);
-        const {items}=this.heap.Array; 
+        }   
+        console.log(aux); 
         return (
             <table className="table">
             <thead>
@@ -85,23 +75,14 @@ class CerrajeriaPostsHeap extends Component{
                 </tr>
             </thead>
             <tbody id="tabla">
-            <tr>
-                <td>
-                    {/*this.heap.ExtractMax().username*/}
-                    {aux}
-                </td>
-                <td>xd</td>
-                <td>{aux}</td>
-            </tr>
-                {/* { items.map(item => 
+                
                     <tr>
-                        <td>{item.username}</td>
-                        <td>{item.descripcion}</td>
-                        <td>{item.telefono}</td>
-                        <td>{item.calificacion}</td>
+                        <td>{this.heap.Array.username}</td>
+                        <td>{descripcion}</td>
+                        <td>{telefono}</td>
+                        <td>{puntuacion}</td>
                         <td><input type="submit" value="Contratar" className='btn btn-primary btn-block'></input></td> 
                     </tr>
-                )}  */}
             </tbody>
             </table>     
         )
