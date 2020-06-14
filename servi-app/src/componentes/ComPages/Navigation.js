@@ -3,13 +3,7 @@ import firebase from "firebase";
 
 import Logo from "../../resources/LogoServiApp.jpg";
 
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link,
-  withRouter
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 import FileUpload from "./FileUpload.js";

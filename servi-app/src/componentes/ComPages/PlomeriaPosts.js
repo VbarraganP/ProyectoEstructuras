@@ -37,6 +37,7 @@ class PlomeriaPosts extends Component {
                         <td>{item.data.descripcion}</td>
                         <td>{item.data.telefono}</td>
                         <td>{item.data.calificacion}</td>
+                        
                         <td><input type="submit" value="Contratar" className='btn btn-primary btn-block'></input></td>
                     </tr>
                 ): null}

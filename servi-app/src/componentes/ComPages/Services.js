@@ -3,13 +3,7 @@ import React, { Component } from "react";
 import DoorKey from "../../resources/doorKey.jpg";
 import Electrical from "../../resources/Electrical.jpg";
 import Faucets from "../../resources/Faucets.jpg";
-import {
-    BrowserRouter,
-    Switch,
-    Route,
-    Link,
-    withRouter
-  } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 class Services extends Component {

@@ -7,7 +7,7 @@ class CerrajeriaPosts extends Component {
     }
     componentDidMount(){
         var db = firebase.firestore(); 
-        db.collection('Proveedores').get().then((snapShots)=> {
+        db.collection('ProveedoresCerrajeria').get().then((snapShots)=> {
             this.setState({
                 items: snapShots.docs.map( doc => {
                     return {id : doc.id, data: doc.data()}

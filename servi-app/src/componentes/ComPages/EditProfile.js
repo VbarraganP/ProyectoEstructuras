@@ -70,14 +70,14 @@ class EditProfile extends Component{
         if (comprobacion){
             console.log('1'); 
         }else { */
-        db.collection("Proveedores").get().then((querySnapshot) => {
+        db.collection("ProveedoresCerrajeria").get().then((querySnapshot) => {
              querySnapshot.forEach((doc) => {
                if (contador<doc.data().contador){
                    contador = doc.data().contador; 
                }
             });
         });
-        db.collection("Proveedores").add({
+        db.collection("ProveedoresCerrajeria").add({
             username: username,
             telefono: telefono,
             correo: correo, 
@@ -145,7 +145,7 @@ class EditProfile extends Component{
             }else { */
             db.collection("ProveedoresElectricista").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    if (contador< doc.data().contador){
+                    if (contador<doc.data().contador){
                           contador = doc.data().contador; 
                     }
                 });
