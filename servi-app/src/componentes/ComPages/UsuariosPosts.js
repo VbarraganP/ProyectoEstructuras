@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 
-class PlomeriaPosts extends Component {
+class UsuariosPosts extends Component {
     state = {
         items : [] 
     }
     componentDidMount(){
         var db = firebase.firestore(); 
-        db.collection('ProveedoresPlomeria').get().then((snapShots)=> {
+        db.collection('usuarios').get().then((snapShots)=> {
             this.setState({
                 items: snapShots.docs.map( doc => {
                     return {id : doc.id, data: doc.data()}
@@ -20,24 +20,24 @@ class PlomeriaPosts extends Component {
     render(){
         const {items} = this.state; 
         return(
-        <table className="table">
+        <table class="table">
             <thead>
                 <tr>
-                <th scope="col">Proveedor</th>
-                <th scope="col">Descripcion</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo</th>
                 <th scope="col">Telefono</th>
-                <th scope="col">Calificación</th>
-                <th scope ="col">Contratar</th>
+                <th scope="col">Ciudad</th>
+
                 </tr>
             </thead>
             <tbody id="tabla">
                 {items && items !== undefined ? items.map((item,key)=> 
                     <tr key={key}>
                         <td>{item.data.username}</td>
-                        <td>{item.data.descripcion}</td>
+                        <td>{item.data.correo}</td>
                         <td>{item.data.telefono}</td>
-                        <td>{item.data.calificacion}</td>
-                        <td><input type="submit" value="Contratar" className='btn btn-primary btn-block'></input></td>
+                        <td>{item.data.ciudad}</td>
+                     
                     </tr>
                 ): null}
             </tbody>
@@ -45,4 +45,4 @@ class PlomeriaPosts extends Component {
         );
     };
 }
-export default PlomeriaPosts; 
+export default UsuariosPosts; 

@@ -25,7 +25,7 @@ class EditProfile extends Component{
         var  contrasena = document.getElementById('passwordclient').value; 
         db.collection("usuarios").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-               if(doc.data().correo == correo){
+               if(doc.data().correo === correo){
                    comprobacion=true; 
                }
             });
@@ -59,7 +59,7 @@ class EditProfile extends Component{
         var contrasena = document.getElementById('password').value; 
         var servicio = document.getElementById('serviceType').value; 
         var description = document.getElementById('description').value; 
-        if (servicio =="Cerrajeria"){
+        if (servicio ==="Cerrajeria"){
        /* db.collection("Proveedores").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                if(doc.data().correo == correo){
@@ -96,7 +96,7 @@ class EditProfile extends Component{
         });
         //};
         }
-        else if (servicio=="Plomeria"){
+        else if (servicio==="Plomeria"){
           /*  db.collection("ProveedoresPlomeria").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                    if(doc.data().correo == correo){

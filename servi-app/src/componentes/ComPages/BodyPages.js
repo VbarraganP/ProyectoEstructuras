@@ -19,6 +19,7 @@ import {
   } from "react-router-dom";
 import FileUpload from "./FileUpload.js";
 import CerrajeriaPosts from "./CerrajeriaPosts.js";
+import UsuariosPosts from "./UsuariosPosts.js";
 
 const BodyStatus = 'null';
 
@@ -60,6 +61,9 @@ class BodyPages extends Component {
 
                         <Route path="/FileUpload">
                             <FileUpload/>
+                        </Route>
+                        <Route path="/Users">
+                            <UsuariosPosts/>
                         </Route>
                     </Switch>
 
