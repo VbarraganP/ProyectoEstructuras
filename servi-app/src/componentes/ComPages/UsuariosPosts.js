@@ -20,7 +20,7 @@ class UsuariosPosts extends Component {
     render(){
         const {items} = this.state; 
         return(
-        <table class="table">
+        <table className="table">
             <thead>
                 <tr>
                 <th scope="col">Nombre</th>
