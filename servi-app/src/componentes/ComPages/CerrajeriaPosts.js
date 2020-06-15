@@ -5,6 +5,7 @@ class CerrajeriaPosts extends Component {
     state = {
         items : [] 
     }
+    
     componentDidMount(){
         var db = firebase.firestore(); 
         db.collection('ProveedoresCerrajeria').get().then((snapShots)=> {

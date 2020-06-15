@@ -16,6 +16,7 @@ import EditProfile from "./EditProfile.js";
 
 
 
+
 class Navigation extends Component {
   //gestor de estados
   constructor() {

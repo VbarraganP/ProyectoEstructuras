@@ -5,7 +5,6 @@ import Electrical from "../../resources/Electrical.jpg";
 import Faucets from "../../resources/Faucets.jpg";
 import {Link} from "react-router-dom";
 
-
 class Services extends Component {
     
     render(){

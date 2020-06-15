@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import {historial} from "../Data/dataHistorial.json";
 
-
-
 class FileUpload extends Component {
     constructor() {
         super();
@@ -20,7 +18,7 @@ class FileUpload extends Component {
                 })
             })
         } else {
-            return alert("Solo puedes cancelar el ultimo contrato en curso");
+            return alert("HEAP: Solo puedes cancelar el ultimo contrato en curso");
         }
     }
 

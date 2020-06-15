@@ -32,11 +32,13 @@ aux.sort(function(a,b){
 });
 
 
+
 class CerrajeriaPostsHeapWithoutFB extends Component {
     constructor(){
         super(); 
         this.state= {
-            user:null, 
+            user:null,
+            
         }
         this.contratar= this.contratar.bind(this);
         this.handleAuth=this.handleAuth.bind(this);
