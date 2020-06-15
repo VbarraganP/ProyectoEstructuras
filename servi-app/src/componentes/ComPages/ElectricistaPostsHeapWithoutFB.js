@@ -20,16 +20,7 @@ for (let i = 1; i < datosElectricista.Heap.size + 1; i++) {
 
     heaptest.Insert(username, telefono, correo, ciudad, password, descripcion, puntuacion);
 }
-let aux = new Array(1); 
-aux=heaptest.Array; 
-aux.sort(function(a,b){
-    if(a.puntuacion<b.puntuacion){
-        return 1; 
-    }else if(a.puntuacion>b.puntuacion){
-        return -1; 
-    }
-    return 0; 
-});
+let aux = heaptest.HeapSort();
 class ElectricistaPostsHeapWithoutFB extends Component {
     
     render(){

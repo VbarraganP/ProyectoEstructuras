@@ -20,19 +20,7 @@ for (let i = 1; i < datosCerrajeria.Heap.size+1; i++) {
     heaptest.Insert(username, telefono, correo, ciudad, password, descripcion, puntuacion);
 }
 
-let aux=heaptest.Array; 
-
-aux.sort(function(a,b){
-    if(a.puntuacion<b.puntuacion){
-        return 1; 
-    }else if(a.puntuacion>b.puntuacion){
-        return -1; 
-    }
-    return 0; 
-});
-
-
-
+let aux=heaptest.HeapSort(); 
 class CerrajeriaPostsHeapWithoutFB extends Component {
     constructor(){
         super(); 
