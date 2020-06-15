@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Heap from "../Estructuras/Heap.js";
 import Proveedor from "../Usuarios/Proveedor.js";
 import winston from "winston"; 
+import firebase from 'firebase';
 
 let heaptest= new Heap(1);
 let proveedor1 = new Proveedor("Felipe Rojas","3213868636","jrojasce@unal.edu.co","Zipaquira","1234567","Los mejores cerrajeros",4.2); 

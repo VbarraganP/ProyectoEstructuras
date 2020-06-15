@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Heap from "../Estructuras/Heap.js";
 import Proveedor from "../Usuarios/Proveedor.js";
 import winston from "winston"; 
+import firebase from 'firebase';
 
 let heaptest= new Heap(1);
 let proveedor1 = new Proveedor("Felipe Rojas","3213868636","jrojasce@unal.edu.co","Zipaquira","1234567","Los mejores cerrajeros",4.2); 
@@ -27,7 +28,44 @@ aux.sort(function(a,b){
     return 0; 
 });
 class CerrajeriaPostsHeapWithoutFB extends Component {
-    
+    constructor(){
+        super(); 
+        this.state= {
+            user:null, 
+        }
+        this.contratar= this.contratar.bind(this);
+        this.handleAuth=this.handleAuth.bind(this);
+    }
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+          this.setState({user});
+        });
+    }
+    handleAuth() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase
+          .auth()
+          .signInWithPopup(provider)
+          .then((result) => console.log(`${result.user.email} ha iniciado sesion`))
+          .catch((error) => console.log(`Error ${error.code}:{error.message}`));
+    }
+    contratar(usernameProveedor,correoProveedor){
+        var db= firebase.firestore(); 
+       // var correoCliente = this.state.user.email; 
+        db.collection("Contratos").add({
+            correoCliente: "correoCliente",
+            correoProveedor: correoProveedor,
+            usernameProveedor: usernameProveedor,
+            Date: "",
+            Servicio: "Cerrajeria"
+        })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+    }
     render(){
         return (
             <div>
@@ -48,7 +86,7 @@ class CerrajeriaPostsHeapWithoutFB extends Component {
                         <td>{proveedor.descripcion}</td>
                         <td>{proveedor.telefono}</td>
                         <td>{proveedor.puntuacion}</td>
-                        <td><input type="submit" value="Contratar" className='btn btn-primary btn-block'></input></td> 
+                        <td><button className='btn btn-primary btn-block' /* onClick={this.contratar(proveedor.username,proveedor.correo)} */>Contratar</button></td> 
                     </tr>
                 )}
             </tbody>
