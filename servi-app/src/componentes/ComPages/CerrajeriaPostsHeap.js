@@ -40,6 +40,9 @@ class CerrajeriaPostsHeap extends Component{
                     this.heap.Insert(proveedor);
             });
         });
+        
+    
+
         console.log(this.heap.Array);
         return (
             <table className="table">

@@ -52,6 +52,8 @@ class CerrajeriaPostsHeapWithoutFB extends Component {
     contratar(usernameProveedor,correoProveedor){
         var db= firebase.firestore(); 
        // var correoCliente = this.state.user.email; 
+
+       //Funcion que deberia ir en onlick de contratarBTN
         db.collection("Contratos").add({
             correoCliente: "correoCliente",
             correoProveedor: correoProveedor,
@@ -80,13 +82,14 @@ class CerrajeriaPostsHeapWithoutFB extends Component {
                 </tr>
             </thead>
             <tbody id="tabla">
+                
                 {aux.map((proveedor,key) =>
                     <tr key={key}>
                         <td>{proveedor.username}</td>
                         <td>{proveedor.descripcion}</td>
                         <td>{proveedor.telefono}</td>
                         <td>{proveedor.puntuacion}</td>
-                        <td><button className='btn btn-primary btn-block' /* onClick={this.contratar(proveedor.username,proveedor.correo)} */>Contratar</button></td> 
+                        <td><button id="contratarBTN" className='btn btn-primary btn-block' /* onClick={this.contratar(proveedor.username,proveedor.correo)} */>Contratar</button></td> 
                     </tr>
                 )}
             </tbody>
