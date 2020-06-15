@@ -10,6 +10,9 @@ import PlomeriaPosts from "./PlomeriaPosts.js";
 import ElectricistaPosts from "./ElectricistaPosts.js";
 import CerrajeriaPostsHeap from "./CerrajeriaPostsHeap.js";
 import CerrajeriaPostsHeapWithoutFB from "./CerrajeriaPostsHeapWithoutFB.js";
+import PlomeriaPostsHeapWithoutFB from "./PlomeriaPostsHeapWihoutFB.js"; 
+import ElectricistaPostsHeapWithoutFB from "./ElectricistaPostsHeapWithoutFB.js";
+
 import {
     BrowserRouter,
     Switch,
@@ -51,12 +54,12 @@ class BodyPages extends Component {
                             <CerrajeriaPostsHeapWithoutFB/>
                         </Route>
  
-                        <Route path="/PlomeriaPosts">
-                            <PlomeriaPosts/>
+                        <Route path="/PlomeriaPostsHeapWithoutFB">
+                            <PlomeriaPostsHeapWithoutFB/>
                         </Route>
 
-                        <Route path="/ElectricistaPosts">
-                            <ElectricistaPosts/>
+                        <Route path="/ElectricistaPostsHeapWithoutFB">
+                            <ElectricistaPostsHeapWithoutFB/>
                         </Route>
 
                         <Route path="/FileUpload">
