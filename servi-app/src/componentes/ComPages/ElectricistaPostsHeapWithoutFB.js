@@ -3,20 +3,22 @@ import Heap from "../Estructuras/Heap.js";
 import Proveedor from "../Usuarios/Proveedor.js";
 import winston from "winston"; 
 import firebase from 'firebase';
+import datosElectricista from "../Data/dataProvElectricista.json"
 
-let heaptest= new Heap(1);
-let proveedor1 = new Proveedor("Felipe Rojas","3213868636","jrojasce@unal.edu.co","Zipaquira","1234567","Los mejores cerrajeros",4.2); 
-let proveedor2 = new Proveedor("Victor B","3213868635","vbarragan@unal.edu.co","Bogota","1234567","Los peores cerrajeros",1.2); 
-let proveedor3 = new Proveedor("Leandro","3213868634","lgomez@unal.edu.co","Bogota","1234567","cerrajeros",5); 
-let proveedor4 = new Proveedor("Felipe Rojas","3213868636","jrojasce@unal.edu.co","Zipaquira","1234567","Los mejores cerrajeros",4.2); 
-let proveedor5 = new Proveedor("Victor B","3213868635","vbarragan@unal.edu.co","Bogota","1234567","Los peores cerrajeros",1.2); 
-let proveedor6 = new Proveedor("Leandro","3213868634","lgomez@unal.edu.co","Bogota","1234567","cerrajeros",5); 
-heaptest.Insert(proveedor1); 
-heaptest.Insert(proveedor2); 
-heaptest.Insert(proveedor3); 
-heaptest.Insert(proveedor4); 
-heaptest.Insert(proveedor5); 
-heaptest.Insert(proveedor6); 
+let heaptest= new Heap(30);
+for (let i = 1; i < datosElectricista.Heap.size + 1; i++) {
+    const username = datosElectricista.Heap.Array[i].username;
+    const telefono = datosElectricista.Heap.Array[i].telefono;
+    const correo = datosElectricista.Heap.Array[i].correo;
+    const ciudad = datosElectricista.Heap.Array[i].ciudad;
+    const password = datosElectricista.Heap.Array[i].password;
+    const descripcion = datosElectricista.Heap.Array[i].descripcion;
+
+    const puntuacion = datosElectricista.Heap.Array[i].puntuacion;
+
+
+    heaptest.Insert(username, telefono, correo, ciudad, password, descripcion, puntuacion);
+}
 let aux = new Array(1); 
 aux=heaptest.Array; 
 aux.sort(function(a,b){

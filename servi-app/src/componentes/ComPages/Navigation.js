@@ -6,7 +6,7 @@ import Logo from "../../resources/LogoServiApp.jpg";
 import {Link} from "react-router-dom";
 
 
-import FileUpload from "./FileUpload.js";
+import Historial from "./Historial.js";
 
 import BodyPages from "./BodyPages"
 //paginas derivadas
@@ -114,8 +114,8 @@ class Navigation extends Component {
                 EditProfile
             </Link>
             
-            <Link to="/FileUpload" className="btn btn-dark" >
-                FileUpload
+            <Link to="/Historial" className="btn btn-dark" >
+                Historial
             </Link>
 
             <Link to="/Users" className="btn btn-dark">

@@ -34,17 +34,11 @@ class Heap {
             this.SiftDown(maxindex);
         }
     }
-    Insert(Proveedor) {
-        if (this.Array.size == this.maxsize) {
-           this.maxsize = this.maxsize * 2;
-           let aux = new Array(this.maxsize);
-           for (let j = 0; j < this.Array.lenght; j++) {
-                aux[j] = this.Array[j];
-            }
-            this.Array=aux; 
-        }
+    Insert(username, telefono, correo, ciudad, password, descripcion, puntuacion) {
+
+        let data = new proveedor(username, telefono, correo, ciudad, password, descripcion, puntuacion);
         this.size = this.size + 1;
-        this.Array[this.size] = Proveedor;
+        this.Array[this.size] = data;
         this.SiftUp(this.size);
     }
     ExtractMax() {
@@ -60,7 +54,7 @@ class Heap {
         if (data > olddata) {
             this.SiftUp(i);
         } else {
-            this.Siftdown(i);
+            this.SiftDown(i);
         }
     }
 }

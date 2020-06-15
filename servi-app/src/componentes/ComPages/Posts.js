@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import FileUpload from "./FileUpload.js";
+import Historial from "./Historial.js";
 
 class Posts extends Component {
     constructor() {
@@ -54,7 +54,7 @@ class Posts extends Component {
     render() {
         return(
             <div>
-                <FileUpload onUpload={this.handleUpload} />
+                <Historial onUpload={this.handleUpload} />
 
                 {
                     this.state.pictures.map(picture => (

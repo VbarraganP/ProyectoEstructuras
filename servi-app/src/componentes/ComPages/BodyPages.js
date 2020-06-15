@@ -20,7 +20,7 @@ import {
     Link,
     NavLink
   } from "react-router-dom";
-import FileUpload from "./FileUpload.js";
+import Historial from "./Historial.js";
 import CerrajeriaPosts from "./CerrajeriaPosts.js";
 import UsuariosPosts from "./UsuariosPosts.js";
 
@@ -62,8 +62,8 @@ class BodyPages extends Component {
                             <ElectricistaPostsHeapWithoutFB/>
                         </Route>
 
-                        <Route path="/FileUpload">
-                            <FileUpload/>
+                        <Route path="/Historial">
+                            <Historial/>
                         </Route>
                         <Route path="/Users">
                             <UsuariosPosts/>
