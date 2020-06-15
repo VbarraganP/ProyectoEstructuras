@@ -117,6 +117,10 @@ class Navigation extends Component {
             <Link to="/FileUpload" className="btn btn-dark" >
                 FileUpload
             </Link>
+
+            <Link to="/Users" className="btn btn-dark">
+                Usuarios
+            </Link>
           </div>
           
           {this.renderLoginButton()}

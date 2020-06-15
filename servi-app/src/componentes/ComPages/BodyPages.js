@@ -6,9 +6,13 @@ import Services from "./Services.js";
 import Posts from "./Posts.js";
 import EditProfile from "./EditProfile.js";
 import Navigation from "./Navigation";
-import CerrajeriaPosts from "./CerrajeriaPosts.js";
 import PlomeriaPosts from "./PlomeriaPosts.js";
 import ElectricistaPosts from "./ElectricistaPosts.js";
+import CerrajeriaPostsHeap from "./CerrajeriaPostsHeap.js";
+import CerrajeriaPostsHeapWithoutFB from "./CerrajeriaPostsHeapWithoutFB.js";
+import PlomeriaPostsHeapWithoutFB from "./PlomeriaPostsHeapWihoutFB.js"; 
+import ElectricistaPostsHeapWithoutFB from "./ElectricistaPostsHeapWithoutFB.js";
+
 import {
     BrowserRouter,
     Switch,
@@ -17,6 +21,8 @@ import {
     NavLink
   } from "react-router-dom";
 import FileUpload from "./FileUpload.js";
+import CerrajeriaPosts from "./CerrajeriaPosts.js";
+import UsuariosPosts from "./UsuariosPosts.js";
 
 const BodyStatus = 'null';
 
@@ -44,20 +50,23 @@ class BodyPages extends Component {
                             <EditProfile/>
                         </Route>
 
-                        <Route path="/CerrajeriaPosts">
-                            <CerrajeriaPosts/>
+                        <Route path="/CerrajeriaPostsHeapWithoutFB">
+                            <CerrajeriaPostsHeapWithoutFB/>
+                        </Route>
+ 
+                        <Route path="/PlomeriaPostsHeapWithoutFB">
+                            <PlomeriaPostsHeapWithoutFB/>
                         </Route>
 
-                        <Route path="/PlomeriaPosts">
-                            <PlomeriaPosts/>
-                        </Route>
-
-                        <Route path="/ElectricistaPosts">
-                            <ElectricistaPosts/>
+                        <Route path="/ElectricistaPostsHeapWithoutFB">
+                            <ElectricistaPostsHeapWithoutFB/>
                         </Route>
 
                         <Route path="/FileUpload">
                             <FileUpload/>
+                        </Route>
+                        <Route path="/Users">
+                            <UsuariosPosts/>
                         </Route>
                     </Switch>
 
@@ -66,42 +75,6 @@ class BodyPages extends Component {
 
         );
     }
-    
-    /* renderWithBodyStatus(){
-        if (BodyStatus == 'Services') {
-            return (
-                <div>
-                    <Services />
-                </div>
-            )
-
-        } else if (BodyStatus == 'Posts') {
-            return (
-                <div>
-                    <Posts />
-                </div>
-            )
-
-        } else if (BodyStatus == 'EditProfile') {
-            return (
-                <div>
-                    <EditProfile />
-                </div>
-            )
-
-        } else {
-            return (
-                <div>
-                     <Services />
-                </div>
-            )
-        };
-        
-    } */
-    
-    //gestor de estados
-
-    
     render() {
         return (
             <div>

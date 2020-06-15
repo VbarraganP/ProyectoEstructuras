@@ -5,7 +5,6 @@ class Persona {
         this.correo = correo;
         this.ciudad = ciudad;
         this.password = password;
-        this.historial;
     }
 }
-export { Persona };
+export default Persona ;
