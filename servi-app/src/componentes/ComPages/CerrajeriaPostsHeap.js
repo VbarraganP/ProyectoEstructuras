@@ -21,29 +21,11 @@ class CerrajeriaPostsHeap extends Component{
 
     constructor(){
         super();
-        this.heap = new Heap (6);
+        this.heap = new Heap (10);
         this.FirebaseToHeap= this.FirebaseToHeap.bind(this);
     }
     FirebaseToHeap(){
         var db= firebase.firestore();
-        /* db.collection('ProveedoresCerrajeria').get().then((snapShots)=> {
-            this.setState({
-                items: snapShots.docs.map( doc => {
-                    username = doc.data().username;
-                    telefono = doc.data().telefono; 
-                    correo=doc.data().correo; 
-                    ciudad = doc.data().ciudad; 
-                    puntuacion = parseInt(doc.data().calificacion); 
-                    password = doc.data().contrasena; 
-                    descripcion = doc.data().descripcion; 
-                    var proveedor2 = new Proveedor(username,telefono,correo,ciudad,password,descripcion,puntuacion);
-                    this.heap.Insert(proveedor2);
-                    return {id : doc.id, data: doc.data()}
-                 })
-            })
-        }, error => {
-            console.log(error)
-        }); */
         db.collection("ProveedoresCerrajeria").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                     username = doc.data().username;
@@ -54,15 +36,11 @@ class CerrajeriaPostsHeap extends Component{
                     password = doc.data().contrasena; 
                     descripcion = doc.data().descripcion; 
                     var proveedor = new Proveedor(username,telefono,correo,ciudad,password,descripcion,puntuacion);
+                    console.log(proveedor); 
                     this.heap.Insert(proveedor);
             });
         });
         console.log(this.heap.Array);
-        const aux= new Array (this.heap.Array.size);
-         for (var i=0;i<this.heap.Array.size;i++){
-            aux[i]=this.heap.Array[i+1];
-        }   
-        console.log(aux); 
         return (
             <table className="table">
             <thead>
@@ -75,14 +53,15 @@ class CerrajeriaPostsHeap extends Component{
                 </tr>
             </thead>
             <tbody id="tabla">
-                
-                    <tr>
-                        <td>{this.heap.Array.username}</td>
-                        <td>{descripcion}</td>
-                        <td>{telefono}</td>
-                        <td>{puntuacion}</td>
+                {this.heap.Array.map((proveedor,key) =>
+                    <tr key={key}>
+                        <td>{proveedor.username}</td>
+                        <td>{proveedor.descripcion}</td>
+                        <td>{proveedor.telefono}</td>
+                        <td>{proveedor.puntuacion}</td>
                         <td><input type="submit" value="Contratar" className='btn btn-primary btn-block'></input></td> 
                     </tr>
+                )}
             </tbody>
             </table>     
         )

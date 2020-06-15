@@ -1,4 +1,5 @@
 import proveedor from "../Usuarios/Proveedor.js"
+import Proveedor from "../Usuarios/Proveedor.js";
 class Heap {
     constructor(maxsize) {
         this.Array = new Array(maxsize);

@@ -25,7 +25,7 @@ class Services extends Component {
                     <div className="row">
                         <div className="col-sm">
                             <img src={DoorKey} className="" height="200px" width="100%"/>
-                            <Link to="/CerrajeriaPostsHeap" className="">
+                            <Link to="/CerrajeriaPostsHeapWithoutFB" className="">
                                 Cerrajería
                             </Link>
                         </div>

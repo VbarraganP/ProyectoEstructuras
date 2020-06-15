@@ -9,6 +9,7 @@ import Navigation from "./Navigation";
 import PlomeriaPosts from "./PlomeriaPosts.js";
 import ElectricistaPosts from "./ElectricistaPosts.js";
 import CerrajeriaPostsHeap from "./CerrajeriaPostsHeap.js";
+import CerrajeriaPostsHeapWithoutFB from "./CerrajeriaPostsHeapWithoutFB.js";
 import {
     BrowserRouter,
     Switch,
@@ -45,10 +46,10 @@ class BodyPages extends Component {
                             <EditProfile/>
                         </Route>
 
-                        <Route path="/CerrajeriaPostsHeap">
-                            <CerrajeriaPostsHeap/>
+                        <Route path="/CerrajeriaPostsHeapWithoutFB">
+                            <CerrajeriaPostsHeapWithoutFB/>
                         </Route>
-
+ 
                         <Route path="/PlomeriaPosts">
                             <PlomeriaPosts/>
                         </Route>
@@ -67,42 +68,6 @@ class BodyPages extends Component {
 
         );
     }
-    
-    /* renderWithBodyStatus(){
-        if (BodyStatus == 'Services') {
-            return (
-                <div>
-                    <Services />
-                </div>
-            )
-
-        } else if (BodyStatus == 'Posts') {
-            return (
-                <div>
-                    <Posts />
-                </div>
-            )
-
-        } else if (BodyStatus == 'EditProfile') {
-            return (
-                <div>
-                    <EditProfile />
-                </div>
-            )
-
-        } else {
-            return (
-                <div>
-                     <Services />
-                </div>
-            )
-        };
-        
-    } */
-    
-    //gestor de estados
-
-    
     render() {
         return (
             <div>
