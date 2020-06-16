@@ -18,7 +18,7 @@ class FileUpload extends Component {
                 })
             })
         } else {
-            return alert("HEAP: Solo puedes cancelar el ultimo contrato en curso");
+            return alert("Stack: Solo puedes cancelar el ultimo contrato en curso");
         }
     }
 
