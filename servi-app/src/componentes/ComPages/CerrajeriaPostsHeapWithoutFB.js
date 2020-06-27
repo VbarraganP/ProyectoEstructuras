@@ -26,35 +26,24 @@ class CerrajeriaPostsHeapWithoutFB extends Component {
         super(); 
         this.state= {
             user:null,
-            
+            aux:aux,
         }
-        this.contratar= this.contratar.bind(this);
-        this.handleAuth=this.handleAuth.bind(this);
     }
-    componentWillMount() {
+    /* componentWillMount() {
         firebase.auth().onAuthStateChanged((user) => {
           this.setState({user});
         });
     }
-    handleAuth() {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then((result) => console.log(`${result.user.email} ha iniciado sesion`))
-          .catch((error) => console.log(`Error ${error.code}:{error.message}`));
-    }
-    contratar(){
-        
-        /*
+    contratar(index){
+        let proveedor = this.state.aux[index];
         var db= firebase.firestore(); 
        // var correoCliente = this.state.user.email; 
-
+        alert(index);
        //Funcion que deberia ir en onlick de contratarBTN
         db.collection("Contratos").add({
             correoCliente: "correoCliente",
-            correoProveedor: correoProveedor,
-            usernameProveedor: usernameProveedor,
+            correoProveedor: proveedor.correo,
+            usernameProveedor: proveedor.username,
             Date: "",
             Servicio: "Cerrajeria"
         })
@@ -63,12 +52,24 @@ class CerrajeriaPostsHeapWithoutFB extends Component {
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);
-        });
-        */
+        }); */
+        
        
        
-    }
+    //}
     render(){
+        const Proveedores = this.state.aux.map((aux,i)=>{
+            return(
+                <tbody id="tabla">
+                        <td>{aux.username}</td>
+                        <td>{aux.descripcion}</td>
+                        <td>{aux.telefono}</td>
+                        <td>{aux.puntuacion}</td>
+                        <td><button id ="ContratarBTN" className='btn btn-primary btn-block'  >Contratar</button></td> 
+                )
+            </tbody>
+            )
+        })
         return (
             <div>
                 <table className="table">
@@ -81,18 +82,9 @@ class CerrajeriaPostsHeapWithoutFB extends Component {
                 <th scope ="col">Contratar</th>
                 </tr>
             </thead>
-            <tbody id="tabla">
-                
-                {aux.map((proveedor,key) =>
-                    <tr key={key}>
-                        <td>{proveedor.username}</td>
-                        <td>{proveedor.descripcion}</td>
-                        <td>{proveedor.telefono}</td>
-                        <td>{proveedor.puntuacion}</td>
-                        <td><button id="contratarBTN" className='btn btn-primary btn-block' onClick={this.contratar} >Contratar</button></td> 
-                    </tr>
-                )}
-            </tbody>
+            {
+                Proveedores
+            }
             </table>     
             </div>
         )

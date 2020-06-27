@@ -51,16 +51,16 @@ class BodyPages extends Component {
                             <EditProfile/>
                         </Route>
 
-                        <Route path="/CerrajeriaPostsHeapWithoutFB">
-                            <CerrajeriaPostsHeapWithoutFB/>
+                        <Route path="/CerrajeriaPosts">
+                            <CerrajeriaPosts/>
                         </Route>
  
-                        <Route path="/PlomeriaPostsHeapWithoutFB">
-                            <PlomeriaPostsHeapWithoutFB/>
+                        <Route path="/PlomeriaPosts">
+                            <PlomeriaPosts/>
                         </Route>
 
-                        <Route path="/ElectricistaPostsHeapWithoutFB">
-                            <ElectricistaPostsHeapWithoutFB/>
+                        <Route path="/ElectricistaPosts">
+                            <ElectricistaPosts/>
                         </Route>
 
                         <Route path="/Historial">

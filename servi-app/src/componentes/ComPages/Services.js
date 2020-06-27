@@ -18,19 +18,19 @@ class Services extends Component {
                     <div className="row">
                         <div className="col-sm">
                             <img src={DoorKey} className="" height="200px" width="100%"/>
-                            <Link to="/CerrajeriaPostsHeapWithoutFB" className="">
+                            <Link to="/CerrajeriaPosts" className="">
                                 Cerrajería
                             </Link>
                         </div>
                         <div className="col-sm">
                             <img src={Faucets} className="" height="200px" width="100%" />
-                            <Link to="/PlomeriaPostsHeapWithoutFB" className="" >
+                            <Link to="/PlomeriaPosts" className="" >
                                 Plomeria
                             </Link>
                         </div>
                         <div className="col-sm">
                             <img src={Electrical} className="" height="200px" width="100%" />
-                            <Link to="/ElectricistaPostsHeapWithoutFB" className="" >
+                            <Link to="/ElectricistaPosts" className="" >
                                 Electrico
                             </Link>
                         </div>

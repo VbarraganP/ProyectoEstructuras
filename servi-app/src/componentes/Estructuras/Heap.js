@@ -34,7 +34,6 @@ class Heap {
         }
     }
     Insert(username, telefono, correo, ciudad, password, descripcion, puntuacion) {
-
         let data = new proveedor(username, telefono, correo, ciudad, password, descripcion, puntuacion);
         this.size = this.size + 1;
         this.Array[this.size] = data;
