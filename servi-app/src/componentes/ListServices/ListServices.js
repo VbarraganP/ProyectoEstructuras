@@ -8,8 +8,8 @@ const ListServices = ({services}) => {
         <div className="text-sm-center">
             {services && services.map(service => {
                 return (
-                  <Link to={'service/' + service.title}>
-                    <ServiceSummary service={service} key={service.id} />
+                  <Link to={'service/' + service.title} key={service.id}>
+                    <ServiceSummary service={service} />
                   </Link>
                 );
             })}

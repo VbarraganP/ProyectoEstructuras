@@ -14,10 +14,13 @@ class HashTable{
     Insert(username,telefono,correo,ciudad,password){
         let usuario = new NodeUsuario(username,telefono,correo,ciudad,password);
         let inthash =7; 
-        for (let i =0; i<correo.lenght;i++){
-            inthash = (inthash *31 + correo.charAt(i))%this.maxsize;
+        let j=0;
+        while(correo.charAt(j)!=''){
+            j++;
         }
-        console.log(inthash);
+        for (let i =0; i<j;i++){
+            inthash = (inthash*31 +correo.charCodeAt(i))%this.maxsize;
+        }
         if(this.Array[inthash]==null){
             this.Array[inthash]=usuario;
             this.size=this.size+1;
@@ -29,19 +32,20 @@ class HashTable{
     }
     FindUser(correo){
         let inthash =7; 
-        for (let i =0; i<correo.lenght;i++){
-            inthash = (inthash *31 + correo.charAt(i))%this.maxsize;
+        let j=0;
+        while(correo.charAt(j)!=''){
+            j++;
+        }
+        for (let i =0; i<j;i++){
+            inthash = (inthash *31 + correo.charCodeAt(i))%this.maxsize;
         }
         let aux = this.Array[inthash]; 
         while (aux!=null){
-            if(aux.correo.equals(correo)){
+            if(aux.correo==correo){
+                console.log('done');
                 return aux;
             }
             aux=aux.next;
         }
     }   
 }
-let ht = new HashTable(10);
-ht.Insert("Pp","3210","jrojasce@unal.edu.co","zip","1234556");
-ht.Insert("Pp","3210","flopezgo@unal.edu.co","zip","1234556");
-export default HashTable;
