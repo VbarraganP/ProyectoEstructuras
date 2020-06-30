@@ -33,6 +33,7 @@ class CreatePost extends Component {
                         <label htmlFor="content">Post Content</label>
                         <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
                     </div>
+                    
                     <div className="input-field">
                         <button className="btn ">Create</button>
                     </div>
@@ -43,7 +44,7 @@ class CreatePost extends Component {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        createService: (post) => dispatch(createPost(post))
+        createPost: (post) => dispatch(createPost(post))
     }
 }
 

@@ -8,6 +8,7 @@ import Signin from '../componentes/Auth/Signin'
 import SignUp from '../componentes/Auth/SignUp'
 import CreatePost from '../componentes/ListPost/CreatePost'
 import CreateService from '../componentes/ListServices/CreateService'
+import Historial from '../componentes/Historial/Historial';
 
 class App extends Component {
   render(){
@@ -22,6 +23,7 @@ class App extends Component {
             <Route exact path="/signUp" component={SignUp} />
             <Route exact path="/CreatePost" component={CreatePost} />
             <Route exact path="/CreateService" component={CreateService} />
+            <Route exact path="/historial" component={Historial}/>
           </Switch>
         </div>
       </BrowserRouter>

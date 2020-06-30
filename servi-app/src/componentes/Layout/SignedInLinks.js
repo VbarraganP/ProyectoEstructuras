@@ -8,7 +8,7 @@ const SignedInLinks = (props) => {
         <React.Fragment>
             <li className="nav-item"><NavLink className="nav-link" to='/CreatePost'>Crear Post</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to='/CreateService'>Crear servicio</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link" to='/'>Historial</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to='/historial'>Historial</NavLink></li>
             <li><a onClick={props.signOut}>Log Out</a></li>
             <li className="nav-item"><NavLink className="nav-link" to='/'> Usuario </NavLink></li>
             <li className="nav-item">
