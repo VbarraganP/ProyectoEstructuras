@@ -3,18 +3,27 @@ import { connect } from 'react-redux'
 import { createPost } from '../../Store/Actions/PostActions'
 
 class CreatePost extends Component {
+    
     state = {
         calificacion: '0',
         ciudad: '',
-        correo: '',
+        correo: "",
         descripcion: '',
         servicio: '',
-        telefono: ''
+        telefono: '',
+        usuario:''
+        
+
+
     }
 
     handleChange = (e) => {
+        const {auth, profile}=this.props;
         this.setState({
-            [e.target.id]: e.target.value
+
+            [e.target.id]: e.target.value,
+            correo: profile.email,
+            usuario:profile.firstName 
         })
 
     }
@@ -25,7 +34,9 @@ class CreatePost extends Component {
         this.props.createPost(this.state)
     }
     render() {
+        
         return (
+
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="">Crea un nuevo Post</h5>
@@ -33,10 +44,7 @@ class CreatePost extends Component {
                         <label htmlFor="content">Ciudad</label>
                         <input type="text" id="ciudad" onChange={this.handleChange} />
                     </div>
-                    <div className="input-field">
-                        <label htmlFor="content">Correo</label>
-                        <textarea id="correo" className=" " onChange={this.handleChange}></textarea>
-                    </div>
+                    
                     <div className="input-field">
                         <label htmlFor="content">Descripcion del servici</label>
                         <textarea id="descripcion" className=" " onChange={this.handleChange}></textarea>
@@ -58,10 +66,20 @@ class CreatePost extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    
+    
+    
+    return {
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createPost: (post) => dispatch(createPost(post))
     }
 }
 
-export default connect(null,mapDispatchToProps)(CreatePost);
+export default connect(mapStateToProps,mapDispatchToProps)(CreatePost);

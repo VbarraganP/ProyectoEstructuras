@@ -10,9 +10,10 @@ const SignedInLinks = (props) => {
             <li className="nav-item"><NavLink className="nav-link" to='/CreateService'>Crear servicio</NavLink></li>
             <li className="nav-item"><NavLink className="nav-link" to='/historial'>Historial</NavLink></li>
             <li><a onClick={props.signOut}>Log Out</a></li>
-            <li className="nav-item"><NavLink className="nav-link" to='/'> Usuario </NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to='/'>  {props.profile.firstName } </NavLink></li>
             <li className="nav-item">
                 <NavLink className="nav-link" to='/'>
+                {/* {console.log(props) } */}
                     <img
                         className="rounded-circle dropdown-toggle"
                         data-toggle="dropdown"

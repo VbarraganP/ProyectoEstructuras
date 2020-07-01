@@ -7,6 +7,7 @@ const HistSummary = ({historial}) => {
           <h6>{historial.proveedor}</h6>
           <p>{historial.usuario}</p>
           <p>{historial.fecha}</p>
+          <p>{historial.emailUser}</p>
         </div>
       </div>
     );

@@ -8,21 +8,42 @@ import ListHistorial from './ListHistorial';
 class Historial extends Component{
     
     render(){
+        const {auth, profile}=this.props;
         const { historial } = this.props;
+        var aux = new Array;
+        var auxHist = new Array; 
+        aux = historial;
+        if (aux !== undefined ) {
+            for (let i = 0; i < aux.length; i++) {
+                const HistPos = aux[i];
+                
+                if (HistPos.emailUser == profile.email && profile.email !== undefined     ){
+                        auxHist.push(HistPos);
+                        
+                }
+            }
+        }
+        
         return(
             <div className="container">
                 <div className="center">
-                    <ListHistorial historial={ historial } />
+                    
+                    
+                    <ListHistorial historial={ auxHist } />
+                    
                 </div>
             </div>
         )
     }
 }
 const mapStateToProps = (state) => {
-    // console.log(state);
+    
+    
     
     return {
-        historial: state.firestore.ordered.historial
+        historial: state.firestore.ordered.historial,
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 export default compose(

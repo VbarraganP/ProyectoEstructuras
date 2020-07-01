@@ -11,6 +11,7 @@ const ListHistorial = ({historial}) => {
                 return (
                   <a  key={historial.id}>
                     -------
+                    {/* {console.log(historial.emailUser)} */}
                     <HistSummary historial={historial} />
                     -------
                   </a>
