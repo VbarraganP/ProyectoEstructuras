@@ -1,10 +1,9 @@
 class Persona {
-    constructor(username, telefono, correo, ciudad, password) {
+    constructor(username, telefono, correo, ciudad) {
         this.username = username;
         this.telefono = telefono;
         this.correo = correo;
         this.ciudad = ciudad;
-        this.password = password;
     }
 }
 export default Persona ;

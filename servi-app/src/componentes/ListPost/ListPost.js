@@ -2,18 +2,21 @@ import React, { Component } from "react";
 import PostSummary from "./PostSummary";
 import { Link } from "react-router-dom";
 
-const ListServices = ({ posts }) => {
+const ListPosts = ({ posts,id }) => {
+  
   return (
     <div className="text-sm-center">
-      {posts &&
+      {posts && 
         posts.map((post) => {
-          return (
-            <Link to={'/services'}>
-              <PostSummary post={post} key={post.id} />
-            </Link>
-          );
+          if(id==post.servicio){
+            return (
+              <Link to={""} key={""}>
+                <PostSummary post={post} />
+              </Link>
+            )
+          }
         })}
     </div>
   );
 };
-export default ListServices;
+export default ListPosts;

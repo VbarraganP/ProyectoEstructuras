@@ -1,8 +1,7 @@
 const initState = {
-  services: [
-    { id: "1", title: "proveedor1", content: "lorem 1" },
-    { id: "2", title: "proveedor2", content: "lorem 2" },
-    { id: "3", title: "proveedor3", content: "lorem 3" },
+  posts: [
+    { id: "1", calificacion: "0", descripcion: "lorem 1" },
+    { id: "2", calificacion: "proveedor2", descripcion: "lorem 2" }
   ],
 };
 

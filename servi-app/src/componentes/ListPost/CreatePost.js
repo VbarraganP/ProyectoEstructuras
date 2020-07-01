@@ -4,8 +4,12 @@ import { createPost } from '../../Store/Actions/PostActions'
 
 class CreatePost extends Component {
     state = {
-        title: '',
-        content: ''
+        calificacion: '0',
+        ciudad: '',
+        correo: '',
+        descripcion: '',
+        servicio: '',
+        telefono: ''
     }
 
     handleChange = (e) => {
@@ -24,18 +28,30 @@ class CreatePost extends Component {
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="">Post</h5>
+                    <h5 className="">Crea un nuevo Post</h5>
                     <div className="input-field">
-                        <label htmlFor="title">Title</label>
-                        <input type="text" id="title" onChange={this.handleChange} />
+                        <label htmlFor="content">Ciudad</label>
+                        <input type="text" id="ciudad" onChange={this.handleChange} />
                     </div>
                     <div className="input-field">
-                        <label htmlFor="content">Post Content</label>
-                        <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                        <label htmlFor="content">Correo</label>
+                        <textarea id="correo" className=" " onChange={this.handleChange}></textarea>
+                    </div>
+                    <div className="input-field">
+                        <label htmlFor="content">Descripcion del servici</label>
+                        <textarea id="descripcion" className=" " onChange={this.handleChange}></textarea>
+                    </div>
+                    <div className="input-field">
+                        <label htmlFor="content">Servicio</label>
+                        <textarea id="servicio" className=" " onChange={this.handleChange}></textarea>
+                    </div>
+                    <div className="input-field">
+                        <label htmlFor="content">Telefono</label>
+                        <textarea id="telefono" className=" " onChange={this.handleChange}></textarea>
                     </div>
                     
                     <div className="input-field">
-                        <button className="btn ">Create</button>
+                        <button className="btn ">Crear</button>
                     </div>
                 </form>
             </div>

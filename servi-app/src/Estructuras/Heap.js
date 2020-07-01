@@ -1,5 +1,5 @@
-import proveedor from "../Usuarios/Proveedor.js"
-import Proveedor from "../Usuarios/Proveedor.js";
+import proveedor from "../Objetos/Proveedor"
+
 class Heap {
     constructor(maxsize) {
         this.Array = new Array(maxsize);
@@ -33,8 +33,8 @@ class Heap {
             this.SiftDown(maxindex);
         }
     }
-    Insert(username, telefono, correo, ciudad, password, descripcion, puntuacion) {
-        let data = new proveedor(username, telefono, correo, ciudad, password, descripcion, puntuacion);
+    Insert(username, telefono, correo, ciudad,  descripcion, puntuacion) {
+        let data = new proveedor(username, telefono, correo, ciudad, descripcion, puntuacion);
         this.size = this.size + 1;
         this.Array[this.size] = data;
         this.SiftUp(this.size);
