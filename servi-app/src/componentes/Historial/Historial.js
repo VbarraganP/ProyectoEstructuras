@@ -19,7 +19,7 @@ class Historial extends Component{
                 
                 if (HistPos.emailUser == profile.email && profile.email !== undefined     ){
                         auxHist.push(HistPos);
-                        
+                        console.log(auxHist, "test");
                 }
             }
         }
@@ -28,16 +28,17 @@ class Historial extends Component{
             <div className="container">
                 <div className="center">
                     
-                    
+                    {/* {console.log(auth.email)} */}
                     <ListHistorial historial={ auxHist } />
-                    
+                    {console.log(profile.email)}
+                    {console.log(historial)}
                 </div>
             </div>
         )
     }
 }
 const mapStateToProps = (state) => {
-    
+    // console.log(state.firebase );
     
     
     return {
