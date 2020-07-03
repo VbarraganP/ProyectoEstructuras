@@ -100,8 +100,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     // console.log(state.firebase );
-    
-    
     return {
         historial: state.firestore.ordered.historial,
         profile: state.firebase.profile

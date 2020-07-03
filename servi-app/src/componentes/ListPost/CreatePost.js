@@ -5,16 +5,13 @@ import { createPost } from '../../Store/Actions/PostActions'
 class CreatePost extends Component {
     
     state = {
-        calificacion: '0',
+        calificacion: '3',
         ciudad: '',
-        correo: "",
+        correo: '',
         descripcion: '',
         servicio: '',
         telefono: '',
         usuario:''
-        
-
-
     }
 
     handleChange = (e) => {
@@ -34,6 +31,7 @@ class CreatePost extends Component {
         this.props.createPost(this.state)
     }
     render() {
+        console.log(this.props);
         
         return (
 
@@ -67,9 +65,6 @@ class CreatePost extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    
-    
-    
     return {
         auth: state.firebase.auth,
         profile: state.firebase.profile
