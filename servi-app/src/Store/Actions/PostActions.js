@@ -6,7 +6,7 @@ export const createPost = (post) => {
       .collection("post")
       .add({
         ...post,
-        createdAt: new Date(),
+        createdAt: new Date()
       })
       .then(() => {
         dispatch({ type: "CREATE_POST", post });

@@ -8,7 +8,7 @@ const ListPosts = ({ posts,id }) => {
   let Ht = new Heap(10);
   posts && posts.map((post) => {
       if(id==post.servicio){
-          let user = "prueba Cambiar"
+          let user = post.usuario
           let tel = post.telefono
           let correo = post.correo
           let ciudad = post.ciudad
@@ -21,10 +21,10 @@ const ListPosts = ({ posts,id }) => {
   return (
     <div className="text-sm-center">
       {posts1 && 
-        posts1.map((post,key) => {
+        posts1.map(post => {
             return (
-              <Link to={""} key={post.calificacion}>
-                <PostSummary post={post} />
+              <Link to={'Post/'+ post.correo} key={post}>
+                <PostSummary post={post}/>
               </Link>
             )
           }

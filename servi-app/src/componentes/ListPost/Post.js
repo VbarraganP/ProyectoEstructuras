@@ -3,6 +3,7 @@ import PostDetails from './PostDetails'
 import PostTable from './PostTable'
 
 function Post(props) {
+  
     return (
       <div>
         <PostDetails id={props} />

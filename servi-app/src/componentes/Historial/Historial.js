@@ -17,15 +17,9 @@ class Historial extends Component{
         const stackSortedByEntry = stackSortedByDate.slice().sort((a,b)=> a.fecha - b.fecha);
         const popVar = stackSortedByEntry.pop();
         const id = popVar.id
-        // stackSortedByDate = stackSortedByEntry.slice().sort((a,b)=> b.fecha - a.fecha);
         console.log(popVar, "inside function");
         console.log(stackSortedByDate);
         this.props.DeleteHist(popVar,id);
-        // console.log(this.props);
-        
-        
-
-       
     };
 
 
@@ -90,8 +84,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     // console.log(state.firebase );
-    
-    
     return {
         historial: state.firestore.ordered.historial,
         profile: state.firebase.profile

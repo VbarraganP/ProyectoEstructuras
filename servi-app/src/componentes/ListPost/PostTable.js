@@ -17,23 +17,7 @@ class PostTable extends Component {
         let Ht = new Heap(10);
         const { posts } = this.props;
         const id = this.state.id;
-        
-        
-        /*
-        posts.map((post) => {
-            if (id.equals(post.servicio)) {
-                let user = "prueba Cambiar"
-                let tel = post[i].telefono
-                let correo = post.correo
-                let ciudad = post.ciudad
-                let descripcion = post.descripcion
-                let puntuacion = post.calificacion
-                Ht.Insert(user, tel, correo, ciudad, descripcion, puntuacion)
-            }
-        });
-        const auxHeap = Ht.HeapSort()
-        */
-        
+
         return (
             <div className="container">
                 <div className="center">

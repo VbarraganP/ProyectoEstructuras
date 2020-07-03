@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from '../componentes/Layout/Navbar'
 import Services from '../componentes/ListServices/Services'
 import Post from '../componentes/ListPost/Post'
@@ -8,7 +8,8 @@ import Signin from '../componentes/Auth/Signin'
 import SignUp from '../componentes/Auth/SignUp'
 import CreatePost from '../componentes/ListPost/CreatePost'
 import CreateService from '../componentes/ListServices/CreateService'
-import Historial from '../componentes/Historial/Historial';
+import Historial from '../componentes/Historial/Historial'
+import ContractDetails from '../componentes/ListPost/ContractDetails'
 
 class App extends Component {
   render(){
@@ -24,6 +25,7 @@ class App extends Component {
             <Route exact path="/CreatePost" component={CreatePost} />
             <Route exact path="/CreateService" component={CreateService} />
             <Route exact path="/historial" component={Historial}/>
+            <Route exact path="/service/Post/:id" component={ContractDetails} />
           </Switch>
         </div>
       </BrowserRouter>
