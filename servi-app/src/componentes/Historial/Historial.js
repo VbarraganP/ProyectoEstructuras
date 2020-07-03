@@ -16,11 +16,21 @@ class Historial extends Component{
         console.log("click");
         const stackSortedByEntry = stackSortedByDate.slice().sort((a,b)=> a.fecha - b.fecha);
         const popVar = stackSortedByEntry.pop();
-        const id = popVar.id
+        // const id = popVar.id
         // stackSortedByDate = stackSortedByEntry.slice().sort((a,b)=> b.fecha - a.fecha);
         console.log(popVar, "inside function");
+        console.log(popVar);
         console.log(stackSortedByDate);
-        this.props.DeleteHist(popVar,id);
+        // this.props.DeleteHist(popVar,id);
+         
+        if (popVar !== undefined ) {
+            const id = popVar.id
+            this.props.DeleteHist(popVar,id);
+        }else{
+
+            alert("no hay más historiales");
+        }
+           
         // console.log(this.props);
         
         
@@ -55,7 +65,7 @@ class Historial extends Component{
 
         //se ordena el array del stack de estos datos para obtenerlos en un orden en base a la fecha de creación
         const auxHistSortByDate = auxHist.items.slice().sort((a,b)=> b.fecha - a.fecha);
-        console.log(auxHistSortByDate,"Date");
+        // console.log(auxHistSortByDate,"Date");
         const auxHistSortByEntry = auxHistSortByDate.slice().sort((a,b)=> a.fecha - b.fecha);
         console.log(auxHistSortByEntry,"Entry");
         
@@ -64,7 +74,7 @@ class Historial extends Component{
         return(
             <div className="container">
                 <div className="lateral">
-                    <button type="button" value="borrar" onClick={()=> {this.deleteFromStack( auxHistSortByDate ) } }>borrar</button>
+                    <button type="button" value="borrar" onClick={()=> {this.deleteFromStack( auxHistSortByDate ) } }>Cancelar contrato</button>
                 </div>
                 <div className="center">
                     
