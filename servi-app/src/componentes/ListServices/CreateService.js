@@ -17,6 +17,7 @@ class CreateService extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createService(this.state);
+    console.log(this.props);
   };
   render() {
     return (
