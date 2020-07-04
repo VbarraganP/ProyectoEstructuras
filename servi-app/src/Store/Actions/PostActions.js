@@ -5,8 +5,7 @@ export const createPost = (post) => {
     firestore
       .collection("post")
       .add({
-        ...post,
-        createdAt: new Date()
+        ...post
       })
       .then(() => {
         dispatch({ type: "CREATE_POST", post });

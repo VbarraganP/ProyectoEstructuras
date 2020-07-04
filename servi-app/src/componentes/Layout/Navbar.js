@@ -12,9 +12,7 @@ const Navbar = (props) => {
         <nav className="navbar navbar-expand-md bg-dark navbar-dark text-white ">
             <div className="container">
                 <Link to='/service' className="navbar-brand">Servi App</Link>
-                <ul className="navbar-nav ">
-                    {links}
-                </ul>
+                {links}
             </div>
         </nav>
     )

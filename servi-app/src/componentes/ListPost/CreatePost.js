@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 import { createPost } from '../../Store/Actions/PostActions'
+import Historial from '../Historial/Historial'
 
 class CreatePost extends Component {
     
@@ -15,9 +18,9 @@ class CreatePost extends Component {
     }
 
     handleChange = (e) => {
-        const {auth, profile}=this.props;
-        this.setState({
+        const {auth, profile}=this.props;     
 
+        this.setState({
             [e.target.id]: e.target.value,
             correo: profile.email,
             usuario:profile.firstName 
@@ -27,11 +30,12 @@ class CreatePost extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        //console.log(this.state);
+        
         this.props.createPost(this.state)
     }
     render() {
-        console.log(this.props);
+        
+        const { services } = this.props;
         
         return (
 
@@ -44,12 +48,19 @@ class CreatePost extends Component {
                     </div>
                     
                     <div className="input-field">
-                        <label htmlFor="content">Descripcion del servici</label>
+                        <label htmlFor="content">Descripcion del servicio </label>
                         <textarea id="descripcion" className=" " onChange={this.handleChange}></textarea>
                     </div>
-                    <div className="input-field">
+                    <div className="">
                         <label htmlFor="content">Servicio</label>
-                        <textarea id="servicio" className=" " onChange={this.handleChange}></textarea>
+                        <select id="servicio" onChange={this.handleChange}>
+                            <option value="null">Tipo de servicio</option>
+                            {services && services.map(service => {
+                                return (
+                                    <option value={service.title}>{service.title}</option>
+                                );
+                            })}
+                        </select>
                     </div>
                     <div className="input-field">
                         <label htmlFor="content">Telefono</label>
@@ -65,10 +76,13 @@ class CreatePost extends Component {
     }
 }
 const mapStateToProps = (state) => {
+    console.log(state.firestore.ordered);
     return {
-        auth: state.firebase.auth,
-        profile: state.firebase.profile
-    }
+      auth: state.firebase.auth,
+      profile: state.firebase.profile,
+      services: state.firestore.ordered.services,
+      historial: state.firestore.ordered.Contratos,
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -77,4 +91,10 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CreatePost);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    firestoreConnect([
+        { collection: 'services' }
+    ])
+)(CreatePost);
+

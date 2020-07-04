@@ -5,26 +5,50 @@ import {signOut} from '../../Store/Actions/AuthActions'
 
 const SignedInLinks = (props) => {
     return (
-        <React.Fragment>
-            <li className="nav-item"><NavLink className="nav-link" to='/CreatePost'>Crear Post</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link" to='/CreateService'>Crear servicio</NavLink></li>
-            <li className="nav-item"><NavLink className="nav-link" to='/historial'>Historial</NavLink></li>
-            <li><a onClick={props.signOut}>Log Out</a></li>
-            <li className="nav-item"><NavLink className="nav-link" to='/'>  {props.profile.firstName } </NavLink></li>
-            <li className="nav-item">
-                <NavLink className="nav-link" to='/'>
-                {/* {console.log(props) } */}
-                    <img
-                        className="rounded-circle dropdown-toggle"
-                        data-toggle="dropdown"
-                        width="40" 
-                        height="40"
-                        type="button"
-                    />
-                </NavLink>
-            </li>
-        </React.Fragment>
-    )
+      <React.Fragment>
+        <ul className="navbar-nav ">
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/CreatePost">
+              Crear Post
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/CreateService">
+              Crear servicio
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/historial">
+              Historial
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" onClick={props.signOut} to="/service">
+              Log Out
+            </a>
+          </li>
+        </ul>
+        <ul className="navbar-nav ">
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/service">
+              {" "}
+              Bienvenido {props.profile.firstName}{" "}
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/service">
+              <img
+                className="rounded-circle dropdown-toggle"
+                data-toggle="dropdown"
+                width="40"
+                height="40"
+                type="button"
+              />
+            </NavLink>
+          </li>
+        </ul>
+      </React.Fragment>
+    );
 }
 
 

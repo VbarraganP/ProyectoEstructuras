@@ -23,7 +23,7 @@ const ListPosts = ({ posts,id }) => {
       {posts1 && 
         posts1.map(post => {
             return (
-              <Link to={'Post/'+ post.correo} key={post}>
+              <Link to={'/Post/'+ post.correo} key={post}>
                 <PostSummary post={post}/>
               </Link>
             )

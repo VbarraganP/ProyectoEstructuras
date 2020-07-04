@@ -1,5 +1,4 @@
 import React,{Component} from 'react'
-// import ListHistorial from './ListHistorial'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -32,14 +31,12 @@ class Historial extends Component{
         }
            
         // console.log(this.props);
-        
-        
-
-       
     };
 
 
     render(){
+        console.log(this.props);
+        
         const {profile}=this.props;
         const { historial } = this.props;
         let aux = new Stack;
@@ -96,18 +93,16 @@ const mapDispatchToProps = (dispatch) => {
     };
   };
 
-
-
 const mapStateToProps = (state) => {
-    // console.log(state.firebase );
+    console.log(state.firebase.ordered );
     return {
-        historial: state.firestore.ordered.historial,
+        historial: state.firestore.ordered.Contratos,
         profile: state.firebase.profile
     }
 }
 export default compose(
     connect(mapStateToProps,mapDispatchToProps),
     firestoreConnect([
-        { collection: 'historial' }
+        { collection: 'Contratos' }
     ])
 )(Historial);

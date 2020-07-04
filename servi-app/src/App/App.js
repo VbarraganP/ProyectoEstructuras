@@ -25,7 +25,7 @@ class App extends Component {
             <Route exact path="/CreatePost" component={CreatePost} />
             <Route exact path="/CreateService" component={CreateService} />
             <Route exact path="/historial" component={Historial}/>
-            <Route exact path="/service/Post/:id" component={ContractDetails} />
+            <Route exact path="/Post/:id" component={ContractDetails} />
           </Switch>
         </div>
       </BrowserRouter>
