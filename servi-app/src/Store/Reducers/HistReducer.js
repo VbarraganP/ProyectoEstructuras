@@ -7,7 +7,7 @@ const initState = {
   const HistReducer = (state = initState, action) => {
     switch (action.type) {
       case "CREATE_HIST":
-        console.log("created HISTORIAL", action.historial);
+        console.log("created HISTORIAL", action.Contratos);
         return state;
       case 'CREATE_HIST_ERROR':
         console.log("create proyect error",action.err);

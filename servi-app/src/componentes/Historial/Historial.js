@@ -2,14 +2,14 @@ import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import ListHistorial from './ListHistorial';
+import ListHistorialActive from './ListHistorialActive';
+import ListHistorialInactive from "./ListHistorialInactive";
 import Stack from "../../Estructuras/Stack";
 import { DeleteHist } from "../../Store/Actions/HistActions";
 
 
 class Historial extends Component{
 
-    
     deleteFromStack(stackSortedByDate){
 
         console.log("click");
@@ -34,52 +34,84 @@ class Historial extends Component{
     };
 
 
-    render(){
-        console.log(this.props);
-        
-        const {profile}=this.props;
-        const { historial } = this.props;
-        let aux = new Stack;
-        let auxHist = new Stack; 
-        aux = historial;
 
-        
-        //funcion para obtener solo los datos correspondientes al usuario logueado
-        if (aux !== undefined ) {
-            
-            for (let i = 0; i < aux.length; i++) {
-                const HistPos = aux[i];
 
-                if (HistPos.emailUser == profile.email && profile.email !== undefined     ){
-                        auxHist.push(HistPos);
-                }
+
+
+
+
+
+
+    stackInitializationACTIVE(contratos,profile){
+        let stackContracts = new Stack;
+        
+        if (contratos !== undefined) {
+            for (let pos = 0; pos < contratos.length; pos++) {
+                const contract = contratos[pos];
+               
+                if (contract.correoClient == profile.email && profile.email !== undefined && contract.estado == "ACTIVO") { 
+                    stackContracts.push(contract)      
+
+                } 
+    
             }
+            
+            return stackContracts.items.slice().sort((a,b)=> b.creationDate - a.creationDate);;
+            
+        }
+
+    }
+
+
+
+
+    stackInitializationINACTIVE(contratos, profile){
+        let stackContracts = new Stack;
+        
+        if (contratos !== undefined) {
+            for (let pos = 0; pos < contratos.length; pos++) {
+                const contract = contratos[pos];
+               
+                if (contract.correoClient == profile.email && profile.email !== undefined && contract.estado == "INACTIVO") { 
+                    stackContracts.push(contract)      
+
+                } 
+    
+            }
+            
+            return stackContracts.items.slice().sort((a,b)=> b.creationDate - a.creationDate);;
+            
         }
 
 
-        
-        // console.log(auxHist, "test");
 
-        //se ordena el array del stack de estos datos para obtenerlos en un orden en base a la fecha de creación
-        const auxHistSortByDate = auxHist.items.slice().sort((a,b)=> b.fecha - a.fecha);
-        // console.log(auxHistSortByDate,"Date");
-        const auxHistSortByEntry = auxHistSortByDate.slice().sort((a,b)=> a.fecha - b.fecha);
-        console.log(auxHistSortByEntry,"Entry");
+
+
+
+    }
+ 
+
+    render(){
         
+        let auxContratos = new Stack; 
+        const {profile}=this.props;
+        const { contratos } = this.props;
         
+        console.log(this.stackInitializationACTIVE(contratos,profile), "function called");
+
+        
+     
 
         return(
             <div className="container">
-                <div className="lateral">
-                    <button type="button" value="borrar" onClick={()=> {this.deleteFromStack( auxHistSortByDate ) } }>Cancelar contrato</button>
-                </div>
                 <div className="center">
-                    
-                   
-                    <ListHistorial historial={ auxHistSortByDate } />
-                    
-                  
-                </div>
+                    <h1>ACTIVOS</h1>
+                    <ListHistorialActive historial={ this.stackInitializationACTIVE(contratos,profile) } />
+               </div>
+               <div>
+                   <h1>INACTIVOS</h1>
+                    <ListHistorialInactive historial={ this.stackInitializationINACTIVE(contratos,profile) } />
+               </div>
             </div>
         )
     }
@@ -94,14 +126,14 @@ const mapDispatchToProps = (dispatch) => {
   };
 
 const mapStateToProps = (state) => {
-    console.log(state.firebase.ordered );
+    // console.log(state.firestore.data.Contratos ,"state");
     return {
-        historial: state.firestore.ordered.Contratos,
+        contratos: state.firestore.ordered.Contratos,
         profile: state.firebase.profile
     }
 }
 export default compose(
-    connect(mapStateToProps,mapDispatchToProps),
+    connect(mapStateToProps),
     firestoreConnect([
         { collection: 'Contratos' }
     ])
