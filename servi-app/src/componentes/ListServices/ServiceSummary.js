@@ -2,12 +2,25 @@ import React, { Component } from 'react'
 
 const ServiceSummary = ({service}) => {
     return (
-      <div className="card w-50"  >
-          <img src={service.content}  className="img-thumbnail w-50" alt="..."></img>
-        <div className="w-50 ">
-          <h6 className="card-text">{service.title}</h6>
+        <div className="row">
+            <div className="col-sm-6">
+                <div className="card "  >
+                    <div className="card-body">
+                        <img src={service.content}  className="img-thumbnail " alt="..."></img>
+                        <div className="">
+                            <h6 className="card-text ">{service.title}</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-      </div>
+
+
+
+
+
     );
 }
 export default ServiceSummary
