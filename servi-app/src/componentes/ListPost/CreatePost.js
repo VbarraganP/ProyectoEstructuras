@@ -39,20 +39,20 @@ class CreatePost extends Component {
 
                 <form onSubmit={this.handleSubmit} className="white">
                     <div className="container w-50 h-50">
-                        <h5 className="display-3">Crea un nuevo Post</h5>
+                        <h5 className="display-4">Crea un nuevo Post</h5>
 
                         <div className="form-group">
-                            <label htmlFor="content"  className="h4">Ciudad</label>
+                            <label htmlFor="content"  className="h4 float-left">Ciudad</label>
                             <input type="text" id="ciudad" className="form-control" onChange={this.handleChange} />
                         </div>
                         
                         <div className="form-group">
-                            <label htmlFor="content" className="h4">Descripcion del servicio </label>
+                            <label htmlFor="content" className="h4 float-left">Descripción del servicio </label>
                             <textarea id="descripcion" className="form-control" onChange={this.handleChange}></textarea>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="content"  className="h4">Servicio</label>
+                            <label htmlFor="content"  className="h4 float-left">Servicio</label>
                             <select id="servicio" className="form-control" onChange={this.handleChange}>
                                 <option value="null">Tipo de servicio</option>
                                 {services && services.map((service,id) => {
@@ -64,7 +64,7 @@ class CreatePost extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="content" className="h4">Telefono</label>
+                            <label htmlFor="content" className="h4 float-left">Teléfono</label>
                             <textarea id="telefono" className="form-control" onChange={this.handleChange}></textarea>
                         </div>
                         
