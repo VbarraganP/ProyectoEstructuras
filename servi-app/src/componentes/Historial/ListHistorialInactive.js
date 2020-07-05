@@ -11,9 +11,7 @@ const ListHistorialInactive = ({historial}) => {
             {historial && historial.map(historial => {
                 return (
                 <a  key={historial.id}>
-                    -------
                     <HistSummary historial={historial} />
-                    -------
                 </a>
                 );
             })}

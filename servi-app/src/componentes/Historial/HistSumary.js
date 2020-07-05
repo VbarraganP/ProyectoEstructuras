@@ -12,11 +12,35 @@ const HistSummary = ({historial}) => {
     return (
       <div className="as1">
         <div className="as1">
-            <h6>{historial.calificacionProv}</h6>
+        <table class="table">
+          <thead>
+            <tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="float-center">
+              <th scope="row">{historial.calificacionProv}</th>
+              <td>{historial.tipoServicio}</td>
+              <td>{historial.nombreProv}</td>
+              <td>{historial.correoProv}</td>
+              <td><button className="btn btn-secondary" onClick={() => {
+                if(state.showInfo){
+                  setState({...state,showInfo:false})
+                }else {
+                  setState({...state,showInfo:true})
+                }
+              }}>Ver</button></td>
+              <td>{historial.estado=="ACTIVO" ? <button className="btn btn-secondary" onClick ={
+              () => setState({...state,showCalification:true})
+              }>Finalizar</button>:null }</td>
+            </tr>
+          </tbody>
+        </table>
+            {/* <h6>{historial.calificacionProv}</h6>
             <p>{historial.tipoServicio}</p>
             <p>{historial.ciudadProv}</p>
             <p>{historial.correoClient}</p>
-            <p>{historial.correoProv}</p>
+            <p>{historial.correoProv}</p> */}
             {
             state.showInfo==true ? 
               <div>
@@ -28,17 +52,16 @@ const HistSummary = ({historial}) => {
               </div>
               : null 
             }        
-            {/* <button onClick={() => setState({...state,showInfo:true})}>Ver</button> */}
-            <button className="btn btn-secondary" onClick={() => {
+            {/* <button className="btn btn-secondary" onClick={() => {
                 if(state.showInfo){
                   setState({...state,showInfo:false})
                 }else {
                   setState({...state,showInfo:true})
                 }
-            }}>Ver</button> 
-            {historial.estado=="ACTIVO" ? <button onClick ={
+            }}>Ver</button>  */}
+            {/* {historial.estado=="ACTIVO" ? <button onClick ={
               () => setState({...state,showCalification:true})
-            }>Finalizar</button>:null }
+            }>Finalizar</button>:null } */}
             {
             state.showCalification == true ?
             <div>
@@ -100,7 +123,6 @@ const HistSummary = ({historial}) => {
               }>Enviar</button>
             </div>
             : null 
-
             }
         </div>
       </div>

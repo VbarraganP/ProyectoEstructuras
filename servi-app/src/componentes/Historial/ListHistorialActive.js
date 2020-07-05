@@ -11,12 +11,7 @@ const ListHistorialActive = ({historial}) => {
                 return (
                 
                 <a  key={historial.id}>
-                    -------
-                    {/* {console.log(historial)} */}
-                    
                     <HistSummary historial={historial} />
-                    
-                    -------
                 </a>
 
                 
