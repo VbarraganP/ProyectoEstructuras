@@ -22,6 +22,7 @@ const ListPosts = ({ posts,id }) => {
     <div className="text-sm-center">
       {posts1 && 
         posts1.map((post,id) => {
+        //  if()
             return (
               <Link to={'/Post/'+ post.correo} key={id}>
                 <PostSummary post={post}/>

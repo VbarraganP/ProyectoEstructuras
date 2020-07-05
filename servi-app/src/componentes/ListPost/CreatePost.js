@@ -19,13 +19,11 @@ class CreatePost extends Component {
 
     handleChange = (e) => {
         const {auth, profile}=this.props;     
-
         this.setState({
             [e.target.id]: e.target.value,
             correo: profile.email,
             usuario:profile.firstName 
         })
-
     }
 
     handleSubmit = (e) => {

@@ -4,6 +4,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { createHist } from "../../Store/Actions/HistActions";
 import HashTable from "../../Estructuras/HashTable"; 
+import emailjs from 'emailjs-com'
 
 class ContractDetails extends Component {
   state = {
@@ -18,7 +19,8 @@ class ContractDetails extends Component {
     correoClient: "",
     detalles:"",
     estado:"ACTIVO",
-    fecha:""
+    idPostProv : "", 
+    creationDate: ""
     // falta agregar fecha 
   };
   handleChange = (e) => {
@@ -39,13 +41,21 @@ class ContractDetails extends Component {
       tipoServicio: recorridodatos[0].servicio,
       telefonoProv: recorridodatos[0].telefono,
       nombreProv: recorridodatos[0].usuario,
-      nombreClient: profile.firstName,
+      idPostProv : recorridodatos[0].id,
+      nombreClient: profile.firstName + profile.lastName,
       correoClient: profile.email,
       creationDate: fecha
     });
   };
 
-  handleContratarProveedor = (e) => {
+  handleContratarProveedor =async (e) => {
+      e.preventDefault();
+      const Data = {
+        email_des: this.state.correoProv,
+        descripcion_servicio: this.state.descripcionServicio,
+        Client_email: this.state.correoClient,
+        name_email: this.state.nombreClient,
+      };
       let size =0; 
       for(let j = 0; j<1000;j++){
         if (this.props.usuarios[j] != undefined){
@@ -54,7 +64,6 @@ class ContractDetails extends Component {
           break
         }
       }
-
       let hs = new HashTable(size);
       for(let i =0; i<size;i++){
          let username = this.props.usuarios[i].firstName + this.props.usuarios[i].lastName; 
@@ -66,8 +75,22 @@ class ContractDetails extends Component {
        nombreClient: aux.username,
        correoClient: aux.correo
      })
-     this.props.createHist(this.state);
+      this.sendFeedback(Data);
   };
+  sendFeedback  (variables)  {
+	window.emailjs
+       .send("gmail", "template_6oH3UV3l", variables)
+       .then((res) => {
+         console.log("Email successfully sent!");
+         this.props.createHist(this.state);
+       })
+       // Handle errors here however you like, or use a React error boundary
+       .catch((err) =>
+         console.error(
+           "Oh well, you failed. Here some thoughts on the error that occured:",
+           err
+        )
+       );}
 
   render() {
     const { posts } = this.props;

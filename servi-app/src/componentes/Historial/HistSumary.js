@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import firebase from '../../config/fbConfig'
+import { createPost } from '../../Store/Actions/PostActions';
+import { DeletePost } from '../../Store/Actions/PostActions';
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 const HistSummary = ({historial}) => {
   const [state,setState] = useState({showInfo:false,showCalification:false})
@@ -18,6 +23,7 @@ const HistSummary = ({historial}) => {
               <p>{historial.descripcionServicio}</p>
               <p>{historial.detalles}</p>
               <p>{historial.telefonoProv}</p>
+              <p>{historial.id}</p>
               <p>{historial.creationDate.toDate().toDateString()}</p> 
               </div>
               : null 
@@ -37,8 +43,60 @@ const HistSummary = ({historial}) => {
             state.showCalification == true ?
             <div>
               <input type='text' placeholder='Calificación' id='ca'></input> 
-              <button onClick ={()=>
-                console.log('hey')
+              <button onClick ={() => 
+              {const califiacionueva = document.getElementById('ca').value
+                const post = {
+                  calificacion: (parseInt(califiacionueva)+parseInt(historial.calificacionProv))/2,
+                  ciudad: historial.ciudadProv,
+                  correo: historial.correoProv,
+                  descripcion: historial.descripcionServicio,
+                  servicio: historial.tipoServicio,
+                  telefono: historial.telefonoProv,
+                  usuario: historial.nombreProv
+                }
+                db.collection("post").add({
+                  ...post,
+                })
+                .then(function(docRef) {
+                    console.log("Document written with ID: ", docRef.id);
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+                db.collection("post").doc(historial.idPostProv).delete().then(function() {
+                    console.log("Document successfully deleted!");
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                });
+                const historialnuevo = {
+                  calificacionProv: post.calificacion,
+                  ciudadProv: historial.ciudadProv,
+                  correoProv: historial.correoProv,
+                  descripcionServicio: historial.descripcionServicio,
+                  tipoServicio: historial.tipoServicio,
+                  telefonoProv: historial.telefonoProv,
+                  nombreProv: historial.nombreProv,
+                  nombreClient: historial.nombreClient,
+                  correoClient: historial.correoClient,
+                  detalles:historial.detalles,
+                  estado:"INACTIVO", 
+                  creationDate: historial.creationDate
+                }
+                db.collection("Contratos").add({
+                  ...historialnuevo,
+                })
+                .then(function(docRef) {
+                    console.log("Document written with ID: ", docRef.id);
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+                db.collection("Contratos").doc(historial.id).delete().then(function() {
+                    console.log("Document successfully deleted!");
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                });
+                }
               }>Enviar</button>
             </div>
             : null 
@@ -48,5 +106,15 @@ const HistSummary = ({historial}) => {
       </div>
     );
 }
-
-export default HistSummary
+ const mapDispatchToProps = (dispatch) => {
+   return {
+     DeletePost: (post,id) => dispatch(DeletePost(post,id)),
+     createPost: (post) => dispatch(createPost(post))
+   };
+ };
+ export default compose(
+   connect(null, mapDispatchToProps),
+   firestoreConnect([
+       { collection: 'post' }
+   ])
+ )(HistSummary);

@@ -17,7 +17,6 @@ class PostTable extends Component {
         let Ht = new Heap(10);
         const { posts } = this.props;
         const id = this.state.id;
-
         return (
             <div className="container">
                 <div className="center">

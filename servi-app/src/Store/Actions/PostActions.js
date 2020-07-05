@@ -2,6 +2,7 @@ export const createPost = (post) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     //async call to database
     const firestore = getFirestore();
+    console.log('entrando'+post)
     firestore
       .collection("post")
       .add({
@@ -33,3 +34,19 @@ export const createPost = (post) => {
 //       });
 //     }
 // }
+export const DeletePost = (post,id) => {
+  return (dispatch, getState, {getFirebase, getFirestore}) => {
+    //async call to database
+    const firestore = getFirestore();
+    firestore
+      .collection("post")
+      .doc(id)
+      .delete()
+      .then(() => {
+        dispatch({ type: "DELETE_POST", post });
+      })
+      .catch((err) => {
+        dispatch({ type: "DELETE_POST_ERROR", err });
+      });
+  };
+};

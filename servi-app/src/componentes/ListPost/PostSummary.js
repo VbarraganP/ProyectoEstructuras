@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-const PostSummary = ({ post }) => {
+const PostSummary = ({ post}) => {
   return (
     <div className="as">
       <div className="card">
