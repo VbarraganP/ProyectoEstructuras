@@ -29,7 +29,7 @@ const HistSummary = ({historial}) => {
               : null 
             }        
             {/* <button onClick={() => setState({...state,showInfo:true})}>Ver</button> */}
-            <button onClick={() => {
+            <button className="btn btn-secondary" onClick={() => {
                 if(state.showInfo){
                   setState({...state,showInfo:false})
                 }else {
