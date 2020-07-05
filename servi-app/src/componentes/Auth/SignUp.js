@@ -22,6 +22,7 @@ class SignUp extends Component {
         e.preventDefault();
         this.props.signUp(this.state)
     }
+    
     render() {
         const {authError} = this.props;
         return (

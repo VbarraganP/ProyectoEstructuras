@@ -8,24 +8,13 @@ const ListHistorialInactive = ({historial}) => {
     return(
 
         <div className="text-sm-center">
-            <div>
-                {console.log(historial , "IN LISTHISTORI") }
-            </div>
             {historial && historial.map(historial => {
                 return (
-                
                 <a  key={historial.id}>
                     -------
-                    {/* {console.log(historial)} */}
-                    
                     <HistSummary historial={historial} />
-                    
                     -------
                 </a>
-
-                
-
-
                 );
             })}
         </div>

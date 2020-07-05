@@ -9,39 +9,7 @@ import { DeleteHist } from "../../Store/Actions/HistActions";
 
 
 class Historial extends Component{
-
-    deleteFromStack(stackSortedByDate){
-
-        console.log("click");
-        const stackSortedByEntry = stackSortedByDate.slice().sort((a,b)=> a.fecha - b.fecha);
-        const popVar = stackSortedByEntry.pop();
-        // const id = popVar.id
-        // stackSortedByDate = stackSortedByEntry.slice().sort((a,b)=> b.fecha - a.fecha);
-        console.log(popVar, "inside function");
-        console.log(popVar);
-        console.log(stackSortedByDate);
-        // this.props.DeleteHist(popVar,id);
-         
-        if (popVar !== undefined ) {
-            const id = popVar.id
-            this.props.DeleteHist(popVar,id);
-        }else{
-
-            alert("no hay más historiales");
-        }
-           
-        // console.log(this.props);
-    };
-
-
-
-
-
-
-
-
-
-
+    
     stackInitializationACTIVE(contratos,profile){
         let stackContracts = new Stack;
         
@@ -51,7 +19,6 @@ class Historial extends Component{
                
                 if (contract.correoClient == profile.email && profile.email !== undefined && contract.estado == "ACTIVO") { 
                     stackContracts.push(contract)      
-
                 } 
     
             }
@@ -79,16 +46,23 @@ class Historial extends Component{
     
             }
             
-            return stackContracts.items.slice().sort((a,b)=> b.creationDate - a.creationDate);;
+            return stackContracts.items.slice().sort((a,b)=> b.creationDate - a.creationDate);
             
         }
-
-
-
-
-
-
     }
+
+    handleSubmit = (e) => {
+        e.preventDefault();  
+        const aux = new Array
+         for (let index = 0; index < this.props.contratos.length; index++) {
+            if(this.props.contratos[index].estado=="ACTIVO" && this.props.contratos[index].correoClient==this.props.profile.email){
+                aux.push(this.props.contratos[index]);
+            }
+         }
+         aux.slice().sort((a,b)=> a.creationDate - b.creationDate)
+         console.log(aux);
+         this.props.DeleteHist(aux[0],aux[0].id);
+   }
  
 
     render(){
@@ -97,15 +71,14 @@ class Historial extends Component{
         const {profile}=this.props;
         const { contratos } = this.props;
         
-        console.log(this.stackInitializationACTIVE(contratos,profile), "function called");
 
-        
      
 
         return(
             <div className="container">
                 <div className="center">
                     <h1>ACTIVOS</h1>
+                    <button onClick ={this.handleSubmit}>CancelarReciente</button>
                     <ListHistorialActive historial={ this.stackInitializationACTIVE(contratos,profile) } />
                </div>
                <div>
@@ -133,7 +106,7 @@ const mapStateToProps = (state) => {
     }
 }
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps,mapDispatchToProps),
     firestoreConnect([
         { collection: 'Contratos' }
     ])
