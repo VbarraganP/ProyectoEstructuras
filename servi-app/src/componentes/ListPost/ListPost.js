@@ -19,12 +19,12 @@ const ListPosts = ({ posts,id }) => {
     })
   const posts1 = Ht.HeapSort()
   return (
-    <div className="text-sm-center">
+    <div >
       {posts1 && 
         posts1.map((post,id) => {
         //  if()
             return (
-              <Link to={'/Post/'+ post.correo} key={id}>
+              <Link to={'/Post/'+ post.correo} key={id} style={{textDecoration: 'none'}}>
                 <PostSummary post={post}/>
               </Link>
             )

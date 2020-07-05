@@ -18,9 +18,11 @@ class PostTable extends Component {
         const { posts } = this.props;
         const id = this.state.id;
         return (
-            <div className="container">
-                <div className="center">
-                    <ListPost posts={ posts } id={id}/>
+            <div className='card margin-20  mx-auto' style={{ width: 1000 }}>
+                <div className="card-body mx-auto">
+                    <div className="row center">
+                        <ListPost posts={posts} id={id} />
+                    </div>
                 </div>
             </div>
         )
