@@ -55,9 +55,9 @@ class CreatePost extends Component {
                         <label htmlFor="content">Servicio</label>
                         <select id="servicio" onChange={this.handleChange}>
                             <option value="null">Tipo de servicio</option>
-                            {services && services.map(service => {
+                            {services && services.map((service,id) => {
                                 return (
-                                    <option value={service.title}>{service.title}</option>
+                                    <option value={service.title} key={id}>{service.title}</option>
                                 );
                             })}
                         </select>

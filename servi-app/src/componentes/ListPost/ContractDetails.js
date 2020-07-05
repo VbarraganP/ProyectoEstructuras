@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { createHist } from "../../Store/Actions/HistActions";
+import HashTable from "../../Estructuras/HashTable"; 
 
 class ContractDetails extends Component {
   state = {
@@ -15,7 +16,10 @@ class ContractDetails extends Component {
     nombreProv: "",
     nombreClient: "",
     correoClient: "",
-    detalles:""
+    detalles:"",
+    estado:"ACTIVO",
+    fecha:""
+    // falta agregar fecha 
   };
   handleChange = (e) => {
     const { posts } = this.props;
@@ -24,8 +28,8 @@ class ContractDetails extends Component {
     const recorridodatos = posts.filter((post) => {
         if (post.correo == correo && post.servicio) return post   
     })
-    
     const { auth, profile } = this.props;
+    const fecha = new Date()
     this.setState({
       [e.target.id]: e.target.value,
       calificacionProv: recorridodatos[0].calificacion,
@@ -37,21 +41,37 @@ class ContractDetails extends Component {
       nombreProv: recorridodatos[0].usuario,
       nombreClient: profile.firstName,
       correoClient: profile.email,
+      creationDate: fecha
     });
-    
-    
   };
 
   handleContratarProveedor = (e) => {
-    e.preventDefault();
-    
-    this.props.createHist(this.state);
+      let size =0; 
+      for(let j = 0; j<1000;j++){
+        if (this.props.usuarios[j] != undefined){
+          size = size+1; 
+        }else{
+          break
+        }
+      }
+
+      let hs = new HashTable(size);
+      for(let i =0; i<size;i++){
+         let username = this.props.usuarios[i].firstName + this.props.usuarios[i].lastName; 
+         let correo = this.props.usuarios[i].email;
+         hs.Insert(username,correo);
+      } 
+     const aux = hs.FindUser(this.props.auth.email)
+     this.setState({
+       nombreClient: aux.username,
+       correoClient: aux.correo
+     })
+     this.props.createHist(this.state);
   };
 
   render() {
     const { posts } = this.props;
     const correo = this.props.match.params.id;
-    //console.log(props)
     const { auth, profile } = this.props;
     const renderButton = auth.uid ? (
       <button
@@ -68,10 +88,10 @@ class ContractDetails extends Component {
         <h2>Contratos de {correo} </h2>
         <hr></hr>
         {posts &&
-          posts.map((post) => {
+          posts.map((post,id) => {
             if (post.correo == correo && post.servicio) {
               return (
-                <div>
+                <div key={id}>
                   <p>{post.calificacion}</p>
                   <p>{post.descripcion}</p>
                   <p>{post.ciudad}</p>
@@ -100,6 +120,7 @@ const mapStateToProps = (state) => {
       auth: state.firebase.auth,
       posts: state.firestore.ordered.post,
       profile: state.firebase.profile,
+      usuarios: state.firestore.ordered.usuarios
     };
 }
 const mapDispatchToProps = (dispatch) => {
@@ -110,6 +131,7 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
-        { collection: 'post' }
+        { collection: 'post' },
+        { collection : 'usuarios'}
     ])
 )(ContractDetails);

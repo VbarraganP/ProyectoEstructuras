@@ -15,3 +15,21 @@ export const createPost = (post) => {
       });
   };
 };
+// export const SetCalificacion = (id,calificacionnueva) => {
+//   return (dispatch, getState, { getFirebase, getFirestore }) => {
+//     //async call to database
+//     const firestore = getFirestore();
+//     firestore
+//       .collection("post")
+//       .doc(id)
+//       .set({
+//         calificacion: (calificacion + calificacionnueva)/2
+//       })
+//       .then(() => {
+//         dispatch({ type: "UPDATE_POST", calificacion });
+//       })
+//       .catch((err) => {
+//         dispatch({ type: "UPDATE_POST_ERROR", err });
+//       });
+//     }
+// }

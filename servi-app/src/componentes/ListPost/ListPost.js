@@ -21,9 +21,9 @@ const ListPosts = ({ posts,id }) => {
   return (
     <div className="text-sm-center">
       {posts1 && 
-        posts1.map(post => {
+        posts1.map((post,id) => {
             return (
-              <Link to={'/Post/'+ post.correo} key={post}>
+              <Link to={'/Post/'+ post.correo} key={id}>
                 <PostSummary post={post}/>
               </Link>
             )

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import firebase from '../../config/fbConfig'
 
 const HistSummary = ({historial}) => {
-  const [state,setState] = useState({showInfo:false})
+  const [state,setState] = useState({showInfo:false,showCalification:false})
+  var db = firebase.firestore(); 
     return (
       <div className="as1">
         <div className="as1">
@@ -28,9 +30,23 @@ const HistSummary = ({historial}) => {
                   setState({...state,showInfo:true})
                 }
             }}>Ver</button> 
-            {historial.estado=="ACTIVO" ? <button>Finalizar</button>:null }
+            {historial.estado=="ACTIVO" ? <button onClick ={
+              () => setState({...state,showCalification:true})
+            }>Finalizar</button>:null }
+            {
+            state.showCalification == true ?
+            <div>
+              <input type='text' placeholder='Calificación' id='ca'></input> 
+              <button onClick ={()=>
+                console.log('hey')
+              }>Enviar</button>
+            </div>
+            : null 
+
+            }
         </div>
       </div>
     );
 }
+
 export default HistSummary

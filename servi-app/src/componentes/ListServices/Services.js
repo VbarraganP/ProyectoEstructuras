@@ -18,7 +18,6 @@ class Services extends Component{
     }
 }
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         services: state.firestore.ordered.services
     }

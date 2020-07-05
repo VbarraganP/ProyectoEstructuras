@@ -1,7 +1,8 @@
-import Usuario from "../Usuarios/Usuario.js"; 
+import Usuario from "../Objetos/Usuario";
+ 
 class NodeUsuario extends Usuario{
-    constructor(username,telefono,correo,ciudad,password){
-        super(username,telefono,correo,ciudad,password);
+    constructor(username,correo){
+        super(username,correo);
         this.next=null;
     }
 }
@@ -11,8 +12,8 @@ class HashTable{
         this.size=0; 
         this.maxsize=maxsize;
     }
-    Insert(username,telefono,correo,ciudad,password){
-        let usuario = new NodeUsuario(username,telefono,correo,ciudad,password);
+    Insert(username,correo){
+        let usuario = new NodeUsuario(username,correo);
         let inthash =7; 
         let j=0;
         while(correo.charAt(j)!=''){
@@ -37,15 +38,15 @@ class HashTable{
             j++;
         }
         for (let i =0; i<j;i++){
-            inthash = (inthash *31 + correo.charCodeAt(i))%this.maxsize;
+            inthash = (inthash*31 +correo.charCodeAt(i))%this.maxsize;
         }
         let aux = this.Array[inthash]; 
         while (aux!=null){
             if(aux.correo==correo){
-                console.log('done');
                 return aux;
             }
             aux=aux.next;
         }
     }   
 }
+export default HashTable; 
