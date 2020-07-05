@@ -12,7 +12,7 @@ const HistSummary = ({historial}) => {
     return (
       <div className="as1">
         <div className="as1">
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
             </tr>
@@ -30,7 +30,7 @@ const HistSummary = ({historial}) => {
                   setState({...state,showInfo:true})
                 }
               }}>Ver</button></td>
-              <td>{historial.estado=="ACTIVO" ? <button className="btn btn-secondary" onClick ={
+              <td>{historial.estado=="ACTIVO" ? <button className="btn btn-success" onClick ={
               () => setState({...state,showCalification:true})
               }>Finalizar</button>:null }</td>
             </tr>

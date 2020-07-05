@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {signOut} from '../../Store/Actions/AuthActions'
+import userLogo from "../../resources/pngwingcom.png"
 
 const SignedInLinks = (props) => {
     return (
@@ -31,13 +32,14 @@ const SignedInLinks = (props) => {
         <ul className="navbar-nav ">
           <li className="nav-item">
             <NavLink className="nav-link" to="/service">
-              {console.log(props)}
+            
               Bienvenido {props.profile.firstName} {props.profile.lastName}
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/service">
               <img
+                src= {userLogo}
                 className="rounded-circle dropdown-toggle"
                 data-toggle="dropdown"
                 width="40"

@@ -78,9 +78,9 @@ class Historial extends Component{
             <div className="container">
                 <div className="center">
                     <h1>Contratos en Curso</h1>
-                    <button onClick ={this.handleSubmit}>CancelarReciente</button>
+                    <button className="btn btn-danger" onClick ={this.handleSubmit}>CancelarReciente</button>
                 </div>
-                <table class="table">
+                <table className="table">
                     <thead>
                         <tr>
                         <th scope="col">Calificación</th>
@@ -96,7 +96,7 @@ class Historial extends Component{
                 <ListHistorialActive historial={ this.stackInitializationACTIVE(contratos,profile) } />
                <div>
                <h1>Contratos Finalizados</h1>
-                <table class="table">
+                <table className="table">
                         <thead>
                             <tr>
                             <th scope="col">Calificación</th>

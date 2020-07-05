@@ -8,10 +8,10 @@ const ListServices = ({services}) => {
         <div>
             <div className="row row-cols-1 row-cols-md-3">
                 
-                {services && services.map(service => {
+                {services && services.map((service,id) => {
                     return (
-                        <div class="col mb-4">
-                            <Link to={'service/' + service.title} key={service.id}>
+                        <div className="col mb-4" key={id}>
+                            <Link to={'service/' + service.title} >
                                 <ServiceSummary service={service} />
                             </Link>
                         </div>

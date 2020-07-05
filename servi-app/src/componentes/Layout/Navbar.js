@@ -10,7 +10,7 @@ const Navbar = (props) => {
     const links = auth.uid ? <SignedInLinks profile={profile}/> : <SignedOutLinks/> // si hay un usuario acrtivo muestra las acciones de usuario si no login y sign up 
     
     return (
-        <nav className="navbar navbar-expand-md bg-dark navbar-dark text-white ">
+        <nav className="navbar navbar-expand-md  navbar-light text-white " style={{backgroundColor:"#FFC900"}}>
             <div className="container">
                 <img src={image} alt="Logo"
               className="rounded-circle"
