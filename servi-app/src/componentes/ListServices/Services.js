@@ -9,11 +9,9 @@ class Services extends Component{
     render(){
         const { services } = this.props;
         return(
-            <div className="container">
-                <div className="center">
-                    <ListServices services={ services } />
-                </div>
-            </div>
+    
+                <ListServices services={ services } />
+        
         )
     }
 }

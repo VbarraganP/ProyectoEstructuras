@@ -37,39 +37,42 @@ class CreatePost extends Component {
         
         return (
 
-            <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className="">Crea un nuevo Post</h5>
-                    <div className="input-field">
-                        <label htmlFor="content">Ciudad</label>
-                        <input type="text" id="ciudad" onChange={this.handleChange} />
-                    </div>
-                    
-                    <div className="input-field">
-                        <label htmlFor="content">Descripcion del servicio </label>
-                        <textarea id="descripcion" className=" " onChange={this.handleChange}></textarea>
-                    </div>
-                    <div className="">
-                        <label htmlFor="content">Servicio</label>
-                        <select id="servicio" onChange={this.handleChange}>
-                            <option value="null">Tipo de servicio</option>
-                            {services && services.map((service,id) => {
-                                return (
-                                    <option value={service.title} key={id}>{service.title}</option>
-                                );
-                            })}
-                        </select>
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="content">Telefono</label>
-                        <textarea id="telefono" className=" " onChange={this.handleChange}></textarea>
-                    </div>
-                    
-                    <div className="input-field">
-                        <button className="btn ">Crear</button>
+                    <div className="container w-50 h-50">
+                        <h5 className="display-3">Crea un nuevo Post</h5>
+
+                        <div className="form-group">
+                            <label htmlFor="content"  className="h4">Ciudad</label>
+                            <input type="text" id="ciudad" className="form-control" onChange={this.handleChange} />
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="content" className="h4">Descripcion del servicio </label>
+                            <textarea id="descripcion" className="form-control" onChange={this.handleChange}></textarea>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="content"  className="h4">Servicio</label>
+                            <select id="servicio" className="form-control" onChange={this.handleChange}>
+                                <option value="null">Tipo de servicio</option>
+                                {services && services.map((service,id) => {
+                                    return (
+                                        <option value={service.title} key={id}>{service.title}</option>
+                                    );
+                                })}
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="content" className="h4">Telefono</label>
+                            <textarea id="telefono" className="form-control" onChange={this.handleChange}></textarea>
+                        </div>
+                        
+                        <div className="input-field">
+                            <button className="btn btn-success ">Crear</button>
+                        </div>
                     </div>
                 </form>
-            </div>
         )
     }
 }

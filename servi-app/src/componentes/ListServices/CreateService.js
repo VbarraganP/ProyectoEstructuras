@@ -21,26 +21,32 @@ class CreateService extends Component {
   };
   render() {
     return (
-      <div className="container">
+        
         <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="">Crea Un nuevo servicio</h5>
-          <div className="input-field">
-            <label htmlFor="title">Title</label>
-            <input type="text" id="title" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="content">Post Content</label>
-            <textarea
-              id="content"
-              className="materialize-textarea"
-              onChange={this.handleChange}
-            ></textarea>
-          </div>
-          <div className="input-field">
-            <button className="btn ">Create</button>
-          </div>
+            <h5 className="display-3">Crea Un nuevo servicio</h5>
+            <div className="container w-50 h-50">
+                
+
+                <div className="form-group">
+                    <label htmlFor="title" className="h4"  >Titulo</label>
+                    <input type="text" id="title" className="form-control" onChange={this.handleChange} />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="content" className="h4">Post Content</label>
+                    <textarea
+                    id="content"
+                    className="form-control"
+                    onChange={this.handleChange}
+                    ></textarea>
+                </div>
+                
+                <div className="input-field">
+                    <button className="btn btn-success">Create</button>
+                </div>
+
+            </div>
         </form>
-      </div>
     );
   }
 }
