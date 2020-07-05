@@ -23,17 +23,17 @@ class CreateService extends Component {
     return (
         
         <form onSubmit={this.handleSubmit} className="white">
-            <h5 className="display-3">Crea Un nuevo servicio</h5>
+            <h5 className="display-4">Crea un nuevo servicio</h5>
             <div className="container w-50 h-50">
                 
 
                 <div className="form-group">
-                    <label htmlFor="title" className="h4"  >Titulo</label>
+                    <label htmlFor="title" className="h4 float-left"  >Título</label>
                     <input type="text" id="title" className="form-control" onChange={this.handleChange} />
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="content" className="h4">Post Content</label>
+                    <label htmlFor="content" className="h4 float-left">Ruta de Imagen</label>
                     <textarea
                     id="content"
                     className="form-control"
