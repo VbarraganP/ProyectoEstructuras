@@ -31,8 +31,8 @@ const SignedInLinks = (props) => {
         <ul className="navbar-nav ">
           <li className="nav-item">
             <NavLink className="nav-link" to="/service">
-              {" "}
-              Bienvenido {props.profile.firstName}{" "}
+              {console.log(props)}
+              Bienvenido {props.profile.firstName} {props.profile.lastName}
             </NavLink>
           </li>
           <li className="nav-item">
