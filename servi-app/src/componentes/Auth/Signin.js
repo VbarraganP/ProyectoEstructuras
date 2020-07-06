@@ -21,17 +21,17 @@ class SignIn extends Component {
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Sign In</h5>
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" id='email' onChange={this.handleChange} />
+          <h5 className="display-4">Inicia Sesión</h5>
+          <div className="from-group">
+            <label htmlFor="email" className="h4 float-left">Email</label>
+            <input type="email" id='email' className="form-control" onChange={this.handleChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password" className= "h4 float-left">Password</label>
+            <input type="password" id='password'className="form-control"onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id='password' onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Login</button>
+            <button className="btn btn-success">Login</button>
             <div className="center red-text">
               { authError ? <p>Inicio de sesión fallido, intente de nuevo</p> : null }
             </div>
