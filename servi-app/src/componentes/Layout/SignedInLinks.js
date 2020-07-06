@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {signOut} from '../../Store/Actions/AuthActions'
-import userLogo from "../../resources/pngwingcom.png"
+import userLogo from "../../resources/IconUser.png"
 
 const SignedInLinks = (props) => {
     return (
