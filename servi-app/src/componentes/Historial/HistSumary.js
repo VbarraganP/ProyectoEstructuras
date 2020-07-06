@@ -53,7 +53,7 @@ const HistSummary = ({ historial }) => {
                     <button className="btn btn-success" style={{ margin: 2 }} onClick={() => {
                       const califiacionueva = document.getElementById('ca').value
                       const post = {
-                        calificacion: (parseInt(califiacionueva) + parseInt(historial.calificacionProv)) / 2,
+                        calificacion: (parseFloat(califiacionueva) + parseFloat(historial.calificacionProv)) / 2,
                         ciudad: historial.ciudadProv,
                         correo: historial.correoProv,
                         descripcion: historial.descripcionServicio,
@@ -61,6 +61,8 @@ const HistSummary = ({ historial }) => {
                         telefono: historial.telefonoProv,
                         usuario: historial.nombreProv
                       }
+                      console.log(post);
+                      
                       db.collection("post").add({
                         ...post,
                       })

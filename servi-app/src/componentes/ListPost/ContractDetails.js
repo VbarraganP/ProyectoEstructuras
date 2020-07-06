@@ -52,7 +52,7 @@ class ContractDetails extends Component {
       e.preventDefault();
       const Data = {
         email_des: this.state.correoProv,
-        descripcion_servicio: this.state.descripcionServicio,
+        descripcion_servicio: this.state.detalles,
         Client_email: this.state.correoClient,
         name_email: this.state.nombreClient,
       };
@@ -107,32 +107,43 @@ class ContractDetails extends Component {
       <button className="btn btn-secondary">Contratar</button>
     );
     return (
-      <div className="">
-        <h2>Contratos de {correo} </h2>
-        <hr></hr>
-        {posts &&
-          posts.map((post,id) => {
-            if (post.correo == correo && post.servicio) {
-              return (
-                <div key={id}>
-                  <p>{post.calificacion}</p>
-                  <p>{post.descripcion}</p>
-                  <p>{post.ciudad}</p>
-                  <p>{post.telefono}</p>
-                  <div className="input-field">
-                    <label htmlFor="content">Detalles del servicio </label>
-                    <textarea
-                      id="detalles"
-                      className=" "
-                      onChange={this.handleChange}
-                    ></textarea>
+      <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <div className="container bg-white ">
+          <h2>Contratos de {correo} </h2>
+          <hr></hr>
+          {posts &&
+            posts.map((post, id) => {
+              if (post.correo == correo && post.servicio) {
+                return (
+                  <div>
+                    <div className="row row-cols-1 row-cols-md-2" key={id}>
+                      <p className="col mb-4 text-right font-weight-bold"> Usuario: </p> <p className="text-left" >{post.usuario}</p>
+                      <p className="col mb-4 text-right font-weight-bold">Puntuacion Media : </p><p className="text-left">{post.calificacion}</p>
+                      <p className="col mb-4 text-right font-weight-bold">Descripcion del servicio: </p><p className="text-left">{post.descripcion}</p>
+                      <p className="col mb-4 text-right font-weight-bold">Ciudad:  </p><p className="text-left">{post.ciudad}</p>
+                      <p className="col mb-4 text-right font-weight-bold">Telefono del proveesor: </p><p className="text-left">{post.telefono}</p>
+
+
+                    </div>
+                    <div className="input-field ">
+                      <p htmlFor="content" className="font-weight-bold">Detalles del servicio a solicitar:  </p>
+                      <textarea
+                        id="detalles"
+                        className="" style={{
+                          height: 100,
+                          width: 800
+                        }}
+                        onChange={this.handleChange}
+                      ></textarea>
+                    </div>
                   </div>
-                  <hr />
-                </div>
-              );
-            }
-          })}
-        {renderButton}
+                  
+                );
+              }
+            })}
+          {renderButton}
+        </div>
+        
       </div>
     );
   }
