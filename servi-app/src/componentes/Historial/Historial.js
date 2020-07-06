@@ -78,7 +78,7 @@ class Historial extends Component{
             <div className="container">
                 <div className="center">
                     <h1>Contratos en Curso</h1>
-                    <button className="btn btn-danger" onClick ={this.handleSubmit}>CancelarReciente</button>
+                    <button className="btn btn-danger" style={{margin: 10}} onClick ={this.handleSubmit}>CancelarReciente</button>
                 </div>
                 <table className="table">
                     <thead>
